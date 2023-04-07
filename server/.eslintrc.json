@@ -10,6 +10,9 @@
     "sourceType": "module",
     "project": "./tsconfig.json"
   },
+  "plugins": [
+    "prettier"
+  ],
   "rules": {
     "prettier/prettier": "error",
     "@typescript-eslint/space-before-function-paren": "off",
