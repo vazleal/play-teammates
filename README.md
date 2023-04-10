@@ -5,20 +5,27 @@ O sistema fornece uma interface para encontrar companheiros de equipes em jogos 
 # Principais features
 
 O sistema irá contar com:
+
 - Sistema de cadastro/login
 - Criação e personalização de perfil
 - Ferramenta de busca de companheiros de equipes
 
 # Equipe
+
 - Mirna Mendonça e Silva (Design/Frontend e banco de dados)
 - Vinicius Silva Gomes (Full-Stack)
 - Átila Augusto Carvalho (Full-Stack)
 - Matheus Vaz Leal Lima (Full-Stack)
 
 # Tecnologias
-- ReactJs
+
 - NodeJS
 - Express.js
 - TypeScript (Backend)
+- SQL (SQLite em desenvolvimento e PostgreSQL em produção)
+- ReactJS
 - JavaScript (Frontend)
-- SQL
+
+---
+
+O backlog do projeto/produto pode ser encontrado [nesse link](BACKLOG.md).
