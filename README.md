@@ -85,8 +85,8 @@ Histórias que já foram detalhadas e devem ser desenvolvidas ao longo da sprint
 
 - Como usuário, eu gostaria de atualizar o meu perfil.
 
-  - Criar rota para atualização das informações de usuário no banco. [Vinicius]
-  - Validar as informações enviadas pelo usuário ao servidor. [Vinicius]
+  - Criar rota para atualização das informações de usuário no banco. [Matheus]
+  - Validar as informações enviadas pelo usuário ao servidor. [Matheus]
   - Criar tela de atualização de perfil. [Mirna]
   - Validar os campos de atualização de perfil. [Mirna]
   - Integrar a interface com as respectivas rotas no servidor. [Mirna]
