@@ -1,7 +1,6 @@
-import { inject as Inject, injectable as Injectable } from 'tsyringe'
+import { prisma } from '@/database/prisma'
 
-import { type Example } from '@/domain/entities/example'
-import { ExamplesRepository } from '@/application/repositories/examples-repository'
+import { type Example } from '@prisma/client'
 
 import { ExampleNotFound } from '@/application/errors/examples/example-not-found'
 
@@ -13,17 +12,13 @@ interface ShowExampleResponse {
   example: Example
 }
 
-@Injectable()
 export class ShowExample {
-  constructor(
-    @Inject('ExamplesRepository')
-    private readonly examplesRepository: ExamplesRepository
-  ) {}
-
   async execute(request: ShowExampleRequest): Promise<ShowExampleResponse> {
     const { exampleId } = request
 
-    const example = await this.examplesRepository.findById(exampleId)
+    const example = await prisma.example.findUnique({
+      where: { id: exampleId }
+    })
 
     if (!example) {
       throw new ExampleNotFound()

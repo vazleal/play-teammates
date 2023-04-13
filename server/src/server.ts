@@ -2,7 +2,6 @@ import 'express-async-errors'
 import 'reflect-metadata'
 
 import '@/config/env'
-import '@/shared/container'
 
 import express from 'express'
 
@@ -10,8 +9,8 @@ import cors from 'cors'
 
 import { PORT } from '@/config/env/app'
 
-import { appRoutes } from '@/infra/http/routes'
-import { errorHandler } from '@/infra/http/middlewares/error-handler'
+import { appRoutes } from '@/routes'
+import { errorHandler } from '@/middlewares/error-handler'
 
 async function bootstrap(): Promise<void> {
   const app = express()
