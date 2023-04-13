@@ -6,11 +6,11 @@ import { CreateExample } from '@/application/use-cases/examples/create-example'
 import { UpdateExample } from '@/application/use-cases/examples/update-example'
 import { DeleteExample } from '@/application/use-cases/examples/delete-example'
 
-import { showExampleParams } from '@/validations/examples/show-example-params'
-import { createExampleBody } from '@/validations/examples/create-example-body'
-import { updateExampleParams } from '@/validations/examples/update-example-params'
-import { updateExampleBody } from '@/validations/examples/update-example-body'
-import { deleteExampleParams } from '@/validations/examples/delete-example-params'
+import { showExampleParams } from '@/infra/http/dtos/examples/show-example-params'
+import { createExampleBody } from '@/infra/http/dtos/examples/create-example-body'
+import { updateExampleParams } from '@/infra/http/dtos/examples/update-example-params'
+import { updateExampleBody } from '@/infra/http/dtos/examples/update-example-body'
+import { deleteExampleParams } from '@/infra/http/dtos/examples/delete-example-params'
 
 export class ExampleController {
   async index(request: Request, response: Response): Promise<any> {

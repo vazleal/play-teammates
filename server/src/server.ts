@@ -9,8 +9,8 @@ import cors from 'cors'
 
 import { PORT } from '@/config/env/app'
 
-import { appRoutes } from '@/routes'
-import { errorHandler } from '@/middlewares/error-handler'
+import { appRoutes } from '@/infra/http/routes'
+import { errorHandler } from '@/infra/http/middlewares/error-handler'
 
 async function bootstrap(): Promise<void> {
   const app = express()
