@@ -1,4 +1,4 @@
-import bg from './BG.jpg';
+import bg from './images/BG.jpg';
 import './App.css';
 
 function App() {
