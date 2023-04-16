@@ -1,4 +1,5 @@
-import bg from './images/BG.jpg';
+import bg from './components/images/BG.jpg';
+import Header from './components/Navbar.js'
 import './App.css';
 
 function App() {
@@ -10,9 +11,11 @@ function App() {
     width: '100vw'
   };
   return (
+    
     <div style={background}>
+      <Header />
       <div className="App">
-        
+          Something
       </div>
     </div>
   );

@@ -1,0 +1,101 @@
+.navbarContainer {
+  position: absolute;
+  width: 1440px;
+  height: 41px;
+  left: 0px;
+  top: 0px;
+  background: rgba(11, 21, 30, 0.79);
+}
+
+.logoNavbar{
+  position: absolute;
+  width: 215px;
+  height: 41px;
+  left: 0px;
+  top: -1px;
+  background: url(./images/Teammates_logo.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-size: 120%;
+  background-position: center center;
+}
+
+.circlePlus{
+  position: relative;
+  height: 20px;
+  width: 20px;
+  left: 1239px;
+  top: 10px;
+  background-image: url(./images/circlePlus.png);
+  background-size: cover;
+}
+
+.userName{
+  position: absolute;
+  height: 20px;
+  width: 128px;
+  left: 1264px;
+  top: 10px;
+  border-radius: nullpx;
+  font-family: 'Post No Bills Jaffna Medium';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 17.0251px;
+  line-height: 25px;
+  text-align: center;
+  color: #FFFFFF;
+}
+
+.frameEntrar{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 13px 14px;
+  gap: 10px;
+  position: absolute;
+  width: 95.86px;
+  height: 54.57px;
+  left: 1220px;
+  top: -8px;
+  border-radius: 3.57143px;
+}
+
+.frameConta{
+  /*position: absolute;
+  width: 137.86px;
+  height: 55px;
+  left: 1302.14px;
+  top: -8px;
+  border-radius: 3.57143px;*/
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 13px 14px;
+  gap: 10px;
+  position: absolute;
+  width: 95.86px;
+  height: 54.57px;
+  left: 1303px;
+  top: -8px;
+  border-radius: 3.57143px;
+}
+
+.button{
+  width: 67.86px;
+  height: 28.57px;
+  mix-blend-mode: normal;
+  position: absolute;
+  left: 15.79%;
+  right: 14.74%;
+  top: 15%;
+  bottom: 15%;
+  font-family: 'Post No Bills Jaffna Medium';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 17.0251px;
+  line-height: 25px;
+  text-align: center;
+  color: #000000;
+}
+
+

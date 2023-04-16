@@ -13,7 +13,7 @@
   }
 }
 
-.App-header {
+.App_header {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
@@ -37,6 +37,3 @@
   }
 }
 
-.gradient-background {
-  background: linear-gradient(to bottom, #ffa301 0%, #FD5F6D 100%);
-}
