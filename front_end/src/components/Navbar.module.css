@@ -1,3 +1,8 @@
+@font-face {
+  font-family: "Post No Bills Jaffna Medium";
+  src: url("../../public/fonts/post-no-bills-jaffna-medium.ttf") format("truetype");
+}
+
 .navbarContainer {
   position: absolute;
   width: 1440px;
