@@ -11,6 +11,8 @@ const Navbar = (props) => {
     <>
     <div className={styles.navbarContainer}>
       <div className={styles.logoNavbar}></div>
+      {props.logged ? (
+      <>
       <div className={styles.frameEntrar}>
           <button className={styles.button} 
             style={{ '--background_color': '#172848' }} onClick={toLog}>
@@ -23,6 +25,7 @@ const Navbar = (props) => {
             Conta
           </button>
       </div>
+      </>):(<div></div>)}
     </div>
     </>
   )

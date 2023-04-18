@@ -14,7 +14,7 @@ function App() {
   return (
     
     <div style={background}>
-      <Navbar />
+      <Navbar logged='false'/>
       <div className="App">
           Something
       </div>
