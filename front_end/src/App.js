@@ -1,6 +1,7 @@
 import bg from './components/images/BG.jpg';
-import Header from './components/Navbar.js'
+import Navbar from './components/Navbar.js'
 import './App.css';
+import {useState} from 'react'
 
 function App() {
   const background = {
@@ -13,7 +14,7 @@ function App() {
   return (
     
     <div style={background}>
-      <Header />
+      <Navbar />
       <div className="App">
           Something
       </div>
