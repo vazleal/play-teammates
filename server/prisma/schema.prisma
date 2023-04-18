@@ -8,6 +8,20 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model User {
+  id        String   @id @default(uuid())
+  username  String   @unique
+  email     String   @unique
+  password  String
+  avatarUrl String   @map("avatar_url")
+  steamId   String?  @unique @map("steam_id")
+  riotId    String?  @unique @map("riot_id")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("users")
+}
+
 model Example {
   id        String   @id @default(uuid())
   message   String
