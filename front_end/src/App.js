@@ -1,24 +1,19 @@
-import bg from './components/images/BG.jpg';
+import Background from './components/Background.js';
 import Navbar from './components/Navbar.js'
+
 import './App.css';
 import {useState} from 'react'
 
 function App() {
-  const background = {
-    backgroundImage: `url(${bg})`,
-    backgroundRepeat: 'no-repeat',
-    backgroundSize: 'cover',
-    height: '100vh',
-    width: '100vw'
-  };
+  
   return (
-    
-    <div style={background}>
+    <>
+      <Background />
       <Navbar logged='false'/>
       <div className="App">
           Something
       </div>
-    </div>
+    </>
   );
 }
 
