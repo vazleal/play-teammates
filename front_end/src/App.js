@@ -34,7 +34,7 @@ function App() {
       <RouterProvider router={router}/>
       <div className="App">
         <MemoryRouter>
-          <Link to="invt">Invitations</Link>
+          <Link to="/invt">Invitations</Link>
         </MemoryRouter>
       </div>
     </>

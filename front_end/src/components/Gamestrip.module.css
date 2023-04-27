@@ -1,0 +1,11 @@
+.Gamestrip{
+    --gradient: linear-gradient(270deg, rgba(0, 0, 0, 0) 0%, #33861a 50.28%, rgba(255, 255, 255, 255) 100%);
+    --top_responsive: 0; 
+    position: absolute;
+    width: 92.777%;
+    height: 4.040%;
+    left: 1.667%;
+    top: var(--top_responsive);
+    background: var(--gradient);
+    opacity: 0.7;
+}
