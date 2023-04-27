@@ -14,8 +14,8 @@
     background-repeat: no-repeat;
     width: 100%;
     height: 100%;
-    left: 15%;
-    top: 50%;
+    left: -0.695%;
+    top: 12.700%;
 }
 
 /*
@@ -34,10 +34,10 @@
 .valorantHome{
     background: url(./images/CITY1.png);
     position: absolute;
-    width: 100%;
-    height: 100%;
-    left: 0;
-    top: 50%;
+    width: 57.153%;
+    height: 93.55%;
+    left: -9.861%;
+    top: -1.270%;
     background-repeat: no-repeat;
     background-size: contain;
 }
