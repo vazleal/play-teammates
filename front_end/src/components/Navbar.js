@@ -1,5 +1,5 @@
 import styles from './Navbar.module.css'
-
+import { Link } from 'react-router-dom';
 const Navbar = (props) => {
   function toLog(){
     console.log("To the LogIn Page");
@@ -11,19 +11,23 @@ const Navbar = (props) => {
     <>
     <div className={styles.navbarContainer}>
       <div className={styles.logoNavbar}></div>
-      {props.logged ? (
+      {props.loged ? (
       <>
       <div className={styles.frameEntrar}>
+        <Link to="/login">
           <button className={styles.button} 
-            style={{ '--background_color': '#172848' }} onClick={toLog}>
+            style={{ '--background_color': '#172848' }}>
             Entrar
           </button>
+        </Link>
       </div>
       <div className={styles.frameConta}>
+        <Link to="/signin">
           <button className={styles.button} 
-            style={{ '--background_color': '#2b3e5c' }} onClick={toSign}>
-            Conta
+            style={{ '--background_color': '#172848' }}>
+            Criar Conta
           </button>
+        </Link>
       </div>
       </>):(<div></div>)}
     </div>
