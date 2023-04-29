@@ -1,11 +1,36 @@
+@font-face {
+    font-family: "Post No Bills Jaffna Light";
+    src: url("../../public/fonts/post-no-bills-jaffna-light.ttf") format("truetype");
+  }
+
 .Gamestrip{
     --gradient: linear-gradient(270deg, rgba(0, 0, 0, 0) 0%, #33861a 50.28%, rgba(255, 255, 255, 255) 100%);
-    --top_responsive: 0; 
+    --top: 0; 
     position: absolute;
     width: 92.777%;
     height: 4.040%;
     left: 1.667%;
-    top: var(--top_responsive);
+    top: var(--top);
     background: var(--gradient);
     opacity: 0.7;
+    display: flex;
+    justify-content: center;
+}
+
+.stripText{
+    position: absolute;
+    width: 120px;
+    height: 48px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Post No Bills Jaffna Light';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 32px;
+    line-height: 48px;
+    text-align: center;
+    color: #D9E3F7;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    white-space: nowrap;
 }

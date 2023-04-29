@@ -1,16 +1,17 @@
-import Background from './components/Background.js';
+import Background from './components/Background.js'
 import Navbar from './components/Navbar.js'
 import Home from './pages/Home.js'
-import Invites from './pages/Invites.js'
+import InviteCS from './pages/InviteCS.js'
+import InviteVal from './pages/InviteVal.js'
+import AllInvites from './pages/AllInvites'
 import Login from './pages/Login.js'
 import SignIn from './pages/SignIn.js'
+
 
 import {createBrowserRouter,
   createRoutesFromElements,
   Route,
-  Link,
   RouterProvider,
-  MemoryRouter,
   Outlet} from 'react-router-dom'
 import './App.css';
 
@@ -28,7 +29,9 @@ function App() {
   const router = createBrowserRouter(createRoutesFromElements(
       <Route path="/" element={<Root />} >
         <Route index element={<Home />} />
-        <Route path="/invt" element={<Invites />} />
+        <Route path="/inviteCS" element={<InviteCS />} />
+        <Route path="/inviteVal" element={<InviteVal />} />
+        <Route path="/allInvites" element={<AllInvites />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signin" element={<SignIn />} />
       </Route>
@@ -38,9 +41,6 @@ function App() {
     <>
       <RouterProvider router={router}/>
       <div className="App">
-        <MemoryRouter>
-          <Link to="/invt">Invitations</Link>
-        </MemoryRouter>
       </div>
     </>
   );

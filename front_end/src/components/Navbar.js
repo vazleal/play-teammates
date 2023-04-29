@@ -10,7 +10,9 @@ const Navbar = (props) => {
   return (
     <>
     <div className={styles.navbarContainer}>
+    <Link to="/">
       <div className={styles.logoNavbar}></div>
+    </Link>
       {props.loged ? (
       <>
       <div className={styles.frameEntrar}>
