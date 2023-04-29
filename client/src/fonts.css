@@ -1,0 +1,11 @@
+@font-face {
+  font-family: 'PostNoBillsJaffna';
+  src: url('./assets/fonts/PostNoBillsJaffna-Light.ttf');
+  font-weight: light;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'AdventPro', sans-serif;
+  src: url('https://fonts.googleapis.com/css2?family=Advent+Pro:wght@200&display=swap');
+}
