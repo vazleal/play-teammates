@@ -1,5 +1,6 @@
 import { Typography as MuiTypography } from '@mui/material'
 import PropTypes from 'prop-types'
+import '../fonts.css'
 
 function TypoMain(props) {
   return (

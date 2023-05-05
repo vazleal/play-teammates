@@ -25,6 +25,8 @@
     "prettier/prettier": "error",
     "react/react-in-jsx-scope": "off",
     "space-before-function-paren": "off",
-    "no-unused-vars": "warn"
+    "no-unused-vars": "warn",
+    "react/prop-types": "off",
+    "multiline-ternary": "off"
   }
 }
