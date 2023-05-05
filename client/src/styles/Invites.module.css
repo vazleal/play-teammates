@@ -1,0 +1,20 @@
+@font-face {
+    font-family: "Advent Pro";
+    src: url("../assets/fonts/AdventPro_Expanded-Light.ttf") format("truetype");
+  }
+
+.textBox{
+    --width: 25.486%;
+    position: absolute;
+    width: var(--width);
+    height: 2.832%;
+    right: 2.778%;
+    top: 5.957%;
+    font-family: 'Advent Pro';
+    font-style: normal;
+    font-weight: 250;
+    font-size: 24px;
+    line-height: 29px;
+    text-align: right;
+    color: #FFFFFF;
+}
