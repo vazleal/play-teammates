@@ -14,12 +14,31 @@ model User {
   email     String   @unique
   password  String
   avatarUrl String   @map("avatar_url")
-  steamId   String?  @unique @map("steam_id")
-  riotId    String?  @unique @map("riot_id")
+  steamId   String?  @map("steam_id")
+  steamName String?  @map("steam_name")
+  riotId    String?  @map("riot_id")
+  riotTag   String?  @map("riot_tag")
+  invites   Invite[]
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
 
   @@map("users")
+}
+
+model Invite {
+  id          String    @id @default(uuid())
+  isRanked    Boolean   @default(false)
+  game        String    @map("game")
+  notes       String    @map("notes")
+  numPlayers  Int       @map("num_players")
+  rankPlayers String    @map("rank_players")
+  tags        String    @map("tags")
+  createdAt   DateTime  @default(now()) @map("created_at")
+  updatedAt   DateTime  @updatedAt @map("updated_at")
+  user        User      @relation(fields: [userId], references: [id])
+  userId      String
+
+  @@map("invites")
 }
 
 model Example {

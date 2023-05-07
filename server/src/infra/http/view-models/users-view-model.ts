@@ -6,7 +6,9 @@ interface HTTPUser {
   email: string
   avatar: string
   steamId: string | null
+  steamName: string | null
   riotId: string | null
+  riotTag: string | null
   createdAt: Date
   updatedAt: Date
 }
@@ -19,7 +21,9 @@ export class UserViewModel {
       email: user.email,
       avatar: user.avatarUrl,
       steamId: user.steamId,
+      steamName: user.steamName,
       riotId: user.riotId,
+      riotTag: user.riotTag,
       createdAt: user.createdAt,
       updatedAt: user.updatedAt
     }
