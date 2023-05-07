@@ -13,13 +13,81 @@ const useStyles = makeStyles({
     },
 })
 
+const { signIn } = useAuth();
+
+function handleModalOpen(message) {
+    setModalOpen(true)
+    setErrorMessage(message)
+}
+
 function PostInvite(){
     const classes = useStyles();
     const [value, setValue] = useState('');
+
+    const [game, setGame] = useState(null);
+
+    const [isRanked, setIsRanked] = useState(null);
+
+    const [communication, setCommunication] = useState(null);
+
+    const [notes, setNotes] = useState(null);
+
+    const [numPlayers, setNumPlayers] = useState(null);
+
+    const [rankPlayers, setRankPlayers] = useState(null);
+
+    const [motivation, setMotivation] = useState(null);
+
+    const [modalOpen, setModalOpen] = useState(false);
+    const [errorMessage, setErrorMessage] = useState(null);
     
-    const handleChange = (event) => {
-        setValue(event.target.value);
+    // TODO: Alterar mensagens no modal
+    async function handleChange (event) {
+        if (!numPlayers){
+            handleModalOpen('Por favor, a quantidade de jogadores que estão no grupo')
+            return
+        }
+        if (!game){
+            handleModalOpen('Por favor, informe o jogo do convite')
+            return
+        }
+        if (!rankPlayers){
+            handleModalOpen('Por favor, informe o elo mínimo para participar do seu grupo')
+            return
+        }
+        if (!motivation){
+            handleModalOpen('Por favor, informe a motivação do convite')
+            return
+        }
+        if (!communication){
+            handleModalOpen('Por favor, informe qual a categoria de comunicação')
+            return
+        }
+        if (!isRanked){
+            handleModalOpen('Por favor, informe se é ranqueada ou não')
+            return
+        }
+
+        try {
+            await api.post('/invite', {
+              userId: '1', // TODO: Buscar o id do usuario
+              isRanked,
+              game, 
+              notes, 
+              numPlayers, 
+              rankPlayers, 
+              motivation, 
+              communication
+            })
+      
+            toast.success('Convite criado com sucesso!')
+      
+            navigate('/home')
+          } catch (err) {
+            toast.error(getErrorMessage(err))
+          }
     };
+    
     return(
         <>
             <Box sx={{
@@ -59,6 +127,10 @@ function PostInvite(){
                         </Typography>
                         <TextField variant='outlined'
                         multiline
+                        label="Descrição do convite"
+                        type="notes"
+                        value={notes}
+                        onChange={e => setNotes(e.target.value)}
                         sx={{ 
                             position: 'absolute',
                             width: '805px',
@@ -72,21 +144,38 @@ function PostInvite(){
                          />
                         <Grid container alignItems="center">
                             <img src={individual} />
-                            <Typography variant="body1">My Text</Typography>
-                            <Select value={value} onChange={handleChange}>
+                            <Typography variant="body1">Número de jogadores no grupo: </Typography>
+                            <Select value={value} onChange={e => setNumPlayers(e.target.value)}>
                                 <MenuItem value="" />
                                 <MenuItem value='1'>1</MenuItem>
                                 <MenuItem value='2'>2</MenuItem>
                                 <MenuItem value='3'>3</MenuItem>
+                                <MenuItem value='4'>4</MenuItem>
                             </Select>
                         </Grid>
                         <Grid container alignItems="center">
                             <Typography variant="body1">Elo mínimo: </Typography>
-                            <Select value={value} onChange={handleChange}>
-                                <MenuItem value="" />
+                            <Select value={value} onChange={e => setRankPlayers(e.target.value)}>
+                                <MenuItem value=""/>
+                                <MenuItem value='Ferro'>Ferro</MenuItem>
                                 <MenuItem value='Bronze'>Bronze</MenuItem>
                                 <MenuItem value='Prata'>Prata</MenuItem>
                                 <MenuItem value='Ouro'>Ouro</MenuItem>
+                                <MenuItem value='Platina'>Platina</MenuItem>
+                                <MenuItem value='Diamante'>Diamante</MenuItem>
+                                <MenuItem value='Ascendente'>Ascendente</MenuItem>
+                                <MenuItem value='Imortal'>Imortal</MenuItem>
+                                <MenuItem value='Radiante'>Radiante</MenuItem>
+                            </Select>
+                            <Select value={value} onChange={e => setRankPlayers(e.target.value)}>
+                                <MenuItem value=""/>
+                                <MenuItem value='Prata'>Prata</MenuItem>
+                                <MenuItem value='Ouro'>Ouro</MenuItem>
+                                <MenuItem value='Ak'>Ak</MenuItem>
+                                <MenuItem value='Xerife'>Xerife</MenuItem>
+                                <MenuItem value='Aguia'>Águia</MenuItem>
+                                <MenuItem value='Supremo'>Supremo</MenuItem>
+                                <MenuItem value='Global'>Global</MenuItem>
                             </Select>
                         </Grid>
                         <Typography className={classes.text}
@@ -100,23 +189,18 @@ function PostInvite(){
                             Tags:
                         </Typography>
                         <Typography className={classes.text}
+                        value={value} onChange={e => setMotivation(e.target.value)}
                         sx={{
                             
                         }}>
                             Motivação:
                         </Typography>
                         <Typography className={classes.text}
+                        value={value} onChange={e => setCommunication(e.target.value)}
                         sx={{
                             
                         }}>
                             Comunicação:
-                        </Typography>
-                            
-                        <Typography className={classes.text}
-                        sx={{
-                            
-                        }}>
-                            Discord:
                         </Typography>
                     </Box>
                 </Grid>

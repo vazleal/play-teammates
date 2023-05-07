@@ -76,10 +76,17 @@ export function Routes() {
               </ProtectedRoute>
             }
           />
-          <Route path="/inviteCS" element={<InviteCS />} />
+          <Route 
+            path="/postInvite" 
+            element={
+              <ProtectedRoute isAuthenticated={isAuthenticated}>
+                <PostInvite />
+              </ProtectedRoute>
+            }
+          />
           <Route path="/inviteVal" element={<InviteVal />} />
+          <Route path="/inviteCS" element={<InviteCS />} />
           <Route path="/allInvites" element={<AllInvites />} />
-          <Route path="/postInvite" element={<PostInvite />} />
         </Route>
       </Router>
     </BrowserRouter>

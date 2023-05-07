@@ -16,11 +16,11 @@ import { InviteViewModel } from '@/infra/http/view-models/invites-view-model'
 
 export class InviteController {
   async create(request: Request, response: Response): Promise<any> {
-    const { userId, isRanked, game, notes, numPlayers, rankPlayers, tags } = createInviteBody.parse(request.body)
+    const { userId, isRanked, game, notes, numPlayers, rankPlayers, motivation, communication } = createInviteBody.parse(request.body)
 
     const createInvite = new CreateInvite()
     
-    const { invite } = await createInvite.execute({ userId, isRanked, game, notes, numPlayers, rankPlayers, tags })
+    const { invite } = await createInvite.execute({ userId, isRanked, game, notes, numPlayers, rankPlayers, motivation, communication })
 
     return response.status(201).json({ user: InviteViewModel.toHTTP(invite) })
   }
