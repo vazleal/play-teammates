@@ -2,6 +2,8 @@ import { Box , Grid, MenuItem, Select, TextField, ToggleButton, ToggleButtonGrou
 import individual from '../assets/images/vectors/individual.svg';
 import { useState } from 'react';
 import { makeStyles } from '@mui/styles';
+import { useAuth } from '../hooks/useAuth'
+
 const useStyles = makeStyles({
     text: {
         fontFamily: 'Advent Pro',
@@ -13,7 +15,7 @@ const useStyles = makeStyles({
     },
 })
 
-const { signIn } = useAuth();
+const { user } = useAuth();
 
 function handleModalOpen(message) {
     setModalOpen(true)
@@ -70,7 +72,7 @@ function PostInvite(){
 
         try {
             await api.post('/invite', {
-              userId: '1', // TODO: Buscar o id do usuario
+              userId: user.id, // TODO: Buscar o id do usuario
               isRanked,
               game, 
               notes, 
