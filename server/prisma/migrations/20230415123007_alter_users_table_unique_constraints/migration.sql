@@ -10,10 +10,4 @@
 DROP INDEX "users_email_username_steam_id_riot_id_key";
 
 -- CreateIndex
-CREATE UNIQUE INDEX "users_steam_id_key" ON "users"("steam_id");
-
--- CreateIndex
-CREATE UNIQUE INDEX "users_riot_id_key" ON "users"("riot_id");
-
--- CreateIndex
 CREATE UNIQUE INDEX "users_email_username_key" ON "users"("email", "username");
