@@ -6,7 +6,7 @@ import { makeStyles } from '@mui/styles';
 import { useAuth } from '../hooks/useAuth'
 import { api } from '../services/api'
 import { toast } from 'react-toastify'
-import { navigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const useStyles = makeStyles({
     text: {
@@ -19,15 +19,18 @@ const useStyles = makeStyles({
     },
 })
 
-const { user } = useAuth();
-
 function handleModalOpen(message) {
     setModalOpen(true)
     setErrorMessage(message)
 }
 
 function PostInvite(){
+    const { user } = useAuth();
+
+    const navigate = useNavigate();
+
     const classes = useStyles();
+
     const [value, setValue] = useState('');
 
     const [game, setGame] = useState(null);
@@ -47,7 +50,6 @@ function PostInvite(){
     const [modalOpen, setModalOpen] = useState(false);
     const [errorMessage, setErrorMessage] = useState(null);
     
-    // TODO: Alterar mensagens no modal
     async function handleChange (event) {
         if (!numPlayers){
             handleModalOpen('Por favor, a quantidade de jogadores que estão no grupo')
@@ -76,7 +78,7 @@ function PostInvite(){
 
         try {
             await api.post('/invite', {
-              userId: user.id, // TODO: Buscar o id do usuario
+              userId: user.id,
               isRanked,
               game, 
               notes, 
