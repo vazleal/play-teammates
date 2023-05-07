@@ -6,7 +6,7 @@ const inviteRoutes = Router()
 const inviteController = new InviteController()
 
 inviteRoutes.post('/', inviteController.create)
-// inviteRoutes.get('/:id', inviteController.get)
-// inviteRoutes.get('/:game', inviteController.getInvitesByGame)
+inviteRoutes.get('/:id', inviteController.show)
+inviteRoutes.get('/:game', inviteController.filter)
 
 export { inviteRoutes }
