@@ -6,7 +6,9 @@ CREATE TABLE "users" (
     "password" TEXT NOT NULL,
     "avatar_url" TEXT NOT NULL,
     "steam_id" TEXT,
+    "steam_name" TEXT,
     "riot_id" TEXT,
+    "riot_tag" TEXT,
     "created_at" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updated_at" DATETIME NOT NULL
 );
