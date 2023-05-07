@@ -1,8 +1,12 @@
 import { Box , Grid, MenuItem, Select, TextField, ToggleButton, ToggleButtonGroup, Typography} from '@mui/material'
+import '../fonts.css'
 import individual from '../assets/images/vectors/individual.svg';
 import { useState } from 'react';
 import { makeStyles } from '@mui/styles';
 import { useAuth } from '../hooks/useAuth'
+import { api } from '../services/api'
+import { toast } from 'react-toastify'
+import { navigate } from 'react-router-dom'
 
 const useStyles = makeStyles({
     text: {
