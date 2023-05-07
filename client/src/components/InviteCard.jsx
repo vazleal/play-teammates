@@ -1,4 +1,4 @@
-import { Card, CardMedia, CardContent, Typography, Grid } from '@mui/material';
+import { Box, Card, CardMedia, CardContent, Typography, Grid } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import individual from '../assets/images/vectors/individual.svg';
 import CardTag from './CardTag.jsx'
@@ -23,9 +23,19 @@ const useStyles = makeStyles({
   },
 });
 
-function InviteCard({ title, number, engagement, communication }) {
-  const classes = useStyles();
+class Invite{
+  constructor(n,game,eng,comm,disc,min){
+    this.number = n;
+    this.game = game;
+    this.comm = comm;
+    this.disc = disc;
+    this.engage = eng;
+    this.minTier = min;
+  }
+}
 
+function InviteCard({ title, number, engage, communication , discord}) {
+  const classes = useStyles();
   return (
     <Card className={classes.card}>
       <div style={{ borderLeft: '6px', padding: '20px' }}>
@@ -74,8 +84,15 @@ function InviteCard({ title, number, engagement, communication }) {
             </Grid>
           </Grid>
           <CardContent>
-            <CardTag text={communication} />
-            <CardTag text={engagement} />
+            <Box sx={{ display: 'flex' }}>
+              <Box sx={{ mr:0 }}>
+                <CardTag text={communication} />
+                <CardTag text={engage} sx={{}}/>
+              </Box>
+              <Box sx={{ width: '50%', marginLeft: '30%'}}>
+                <CardTag sx={{ width: '50%' }} text={discord} />
+              </Box>
+            </Box>
           </CardContent>
         </CardContent>
       </div>

@@ -6,13 +6,11 @@ function CardTag(props){
         <Box sx={{
             display: "inline-flex",
             width: 'auto',
-            height: '32px',
-            position: 'absolute',
             background: '#858C99 !important',
             opacity: '0.8',
             borderRadius: '8.13679px',
             border: '1px solid gray',
-            padding: '4px',
+            padding: 0.25,
         }}>
             <Typography sx={{
                 width: 'auto',

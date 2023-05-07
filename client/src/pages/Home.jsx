@@ -92,17 +92,17 @@ function Home(){
         text='Valorant'
         link='/inviteVal'/>
         <Box sx={{
-            marginTop: '24%',
+            marginTop: '22%',
         }}>
             <Grid container spacing={2} sx={{height: '190px',}}>
                 <Grid item xs={4} >
-                    <InviteCard title='Unranked' number='2' engagement="casados" communication="Nenhuma"/>
+                    <InviteCard title='Unranked' number='2' engage="casados" communication="Nenhuma" discord='Obrigatório'/>
                 </Grid>
                 <Grid item xs={4}>
-                    <InviteCard title='Ranked' number='1' engagement="casados" communication="Nenhuma" />
+                    <InviteCard title='Ranked' number='1' engage="casados" communication="Nenhuma" discord='Obrigatório'/>
                 </Grid>
                 <Grid item xs={4}>
-                    <InviteCard title='Ranked' number='3' engagement="casados" communication="Nenhuma">
+                    <InviteCard title='Ranked' number='3' engage="casados" communication="Nenhuma" discord='Obrigatório'>
                       <CardTag text='espero que funfe'/>
                     </InviteCard>
                 </Grid>
@@ -111,7 +111,23 @@ function Home(){
         <Gamestrip top_var='71.4%' 
         strip_color='linear-gradient(270deg, rgba(255, 95, 106, 0) 0%, rgba(255, 163, 1, 0.8) 50.28%, rgba(254, 93, 108, 0) 100%)' 
         text='Counter Strike'
-        link='/inviteCS'/>        
+        link='/inviteCS'/>
+        <Box sx={{
+            marginTop: '5%',
+        }} />
+        <Grid container spacing={2} sx={{height: '190px',}}>
+                <Grid item xs={4} >
+                    <InviteCard title='Unranked' number='2' engage="casados" communication="Nenhuma" discord='Obrigatório'/>
+                </Grid>
+                <Grid item xs={4}>
+                    <InviteCard title='Ranked' number='1' engage="casados" communication="Nenhuma" discord='Obrigatório'/>
+                </Grid>
+                <Grid item xs={4}>
+                    <InviteCard title='Ranked' number='3' engage="casados" communication="Nenhuma" discord='Obrigatório'>
+                      <CardTag text='espero que funfe'/>
+                    </InviteCard>
+                </Grid>
+            </Grid>        
     </>
     )}
 

@@ -1,7 +1,7 @@
 import styles from '../styles/Gamestrip.module.css'
 import {Link} from 'react-router-dom'
 import { Box , Typography} from '@mui/material'
-import InviteCard from './InviteCard.jsx'
+
 import '../fonts.css'
 const Gamestrip = (props) => {
     return(

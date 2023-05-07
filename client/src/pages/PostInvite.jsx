@@ -1,5 +1,25 @@
-import { Box , Grid, Typography} from '@mui/material'
+import { Box , Grid, MenuItem, Select, TextField, ToggleButton, ToggleButtonGroup, Typography} from '@mui/material'
+import individual from '../assets/images/vectors/individual.svg';
+import { useState } from 'react';
+import { makeStyles } from '@mui/styles';
+const useStyles = makeStyles({
+    text: {
+        fontFamily: 'Advent Pro',
+        fontStyle: 'normal',
+        fontWeight: 300,
+        fontSize: '32px',
+        lineHeight: '38px',
+        color: '#FFFFFF',
+    },
+})
+
 function PostInvite(){
+    const classes = useStyles();
+    const [value, setValue] = useState('');
+    
+    const handleChange = (event) => {
+        setValue(event.target.value);
+    };
     return(
         <>
             <Box sx={{
@@ -37,17 +57,67 @@ function PostInvite(){
                         }}>
                             Descrição do convite
                         </Typography>
-                        <Box sx={{
+                        <TextField variant='outlined'
+                        multiline
+                        sx={{ 
                             position: 'absolute',
                             width: '805px',
                             height: '167px',
-                            left: '520px',
+                            left: '550px',
                             top: '507px',
                             background: 'linear-gradient(180deg, rgba(17, 27, 37, 0.72) 0%, rgba(29, 44, 73, 0.44) 100%)',
                             opacity: 0.8,
                             borderRadius: '8.13679px',
+                        }}
+                         />
+                        <Grid container alignItems="center">
+                            <img src={individual} />
+                            <Typography variant="body1">My Text</Typography>
+                            <Select value={value} onChange={handleChange}>
+                                <MenuItem value="" />
+                                <MenuItem value='1'>1</MenuItem>
+                                <MenuItem value='2'>2</MenuItem>
+                                <MenuItem value='3'>3</MenuItem>
+                            </Select>
+                        </Grid>
+                        <Grid container alignItems="center">
+                            <Typography variant="body1">Elo mínimo: </Typography>
+                            <Select value={value} onChange={handleChange}>
+                                <MenuItem value="" />
+                                <MenuItem value='Bronze'>Bronze</MenuItem>
+                                <MenuItem value='Prata'>Prata</MenuItem>
+                                <MenuItem value='Ouro'>Ouro</MenuItem>
+                            </Select>
+                        </Grid>
+                        <Typography className={classes.text}
+                        sx={{
+                            position: 'absolute',
+                            width: '57px',
+                            height: '38px',
+                            left: '692px',
+                            top: '826px',
                         }}>
-                        </Box>
+                            Tags:
+                        </Typography>
+                        <Typography className={classes.text}
+                        sx={{
+                            
+                        }}>
+                            Motivação:
+                        </Typography>
+                        <Typography className={classes.text}
+                        sx={{
+                            
+                        }}>
+                            Comunicação:
+                        </Typography>
+                            
+                        <Typography className={classes.text}
+                        sx={{
+                            
+                        }}>
+                            Discord:
+                        </Typography>
                     </Box>
                 </Grid>
             </Grid>
