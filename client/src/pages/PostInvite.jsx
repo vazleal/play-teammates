@@ -7,6 +7,8 @@ import { useAuth } from '../hooks/useAuth'
 import { api } from '../services/api'
 import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
+import MainButton from '../components/MainButton';
+
 
 const useStyles = makeStyles({
     text: {
@@ -17,6 +19,25 @@ const useStyles = makeStyles({
         lineHeight: '38px',
         color: '#FFFFFF',
     },
+    textMilitary: {
+        fontFamily: 'Post No Bills Jaffna Light !important',
+        fontStyle: 'normal !important',
+        fontWeight: 300,
+        fontSize: '32px !important',
+        lineHeight: '38px !important',
+        color: '#FFFFFF !important',
+    },
+    indiv: {
+        position: 'absolute',
+        left: '23.5%',
+        top: '70.25%',
+    },
+    post: {
+        position: 'absolute',
+        align: 'center',
+        top: '40%',
+        padding: '6px 15px !important'
+    }
 })
 
 function handleModalOpen(message) {
@@ -49,8 +70,8 @@ function PostInvite(){
 
     const [modalOpen, setModalOpen] = useState(false);
     const [errorMessage, setErrorMessage] = useState(null);
-    
-    async function handleChange (event) {
+
+    async function handlePostInvite (event) {
         if (!numPlayers){
             handleModalOpen('Por favor, a quantidade de jogadores que estão no grupo')
             return
@@ -95,7 +116,7 @@ function PostInvite(){
             toast.error(getErrorMessage(err))
           }
     };
-    
+
     return(
         <>
             <Box sx={{
@@ -117,12 +138,61 @@ function PostInvite(){
                         opacity: 0.7,
                         boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
                     }} >
+                        <ToggleButtonGroup
+                            value={isRanked} // o valor do botão selecionado atualmente
+                            exclusive // define que apenas um botão pode ser selecionado por vez
+                            onChange={e => setIsRanked(e.target.value)} // função chamada quando um botão é selecionado
+                            aria-label="Selecionar rankeada ou não"
+                            sx={{
+                                position: 'absolute',
+                                left: '40%',
+                                gap: '20%',
+                                top: '36%',
+                            }}>
+                            <ToggleButton value={true} aria-label="Ranked" sx={{background: '#F00F15',}}>
+                                <Typography className={classes.textMilitary}>
+                                    Ranked
+                                </Typography>
+                            </ToggleButton>
+                            <ToggleButton value={false} aria-label="Unranked" sx={{background: '#F00F15',}}>
+                                <Typography className={classes.textMilitary}>
+                                    Unranked
+                                </Typography>
+                            </ToggleButton>
+                        </ToggleButtonGroup>
+
+                        <ToggleButtonGroup
+                            value={game} 
+                            exclusive
+                            onChange={e => setGame(e.target.value)}
+                            aria-label="Selecionar jogo"
+                            sx={{
+                                position: 'absolute',
+                                left: '40%',
+                                gap: '10%',
+                                top: '45%',
+                                minWidth: '500px',
+                            }}
+                            >
+                            <ToggleButton value="Counter Strike" aria-label="CS" sx={{background: '#F00F15',}}>
+                                <Typography className={classes.textMilitary} sx={{width: '500'}}>
+                                    Counter Strike
+                                </Typography>
+                            </ToggleButton>
+                            <ToggleButton value="Valorant" aria-label="Valorant" sx={{
+                                background: '#F00F15',
+                                }}>
+                                <Typography className={classes.textMilitary}>
+                                    Valorant
+                                </Typography>
+                            </ToggleButton>
+                        </ToggleButtonGroup>
                         <Typography sx={{
                             position: 'absolute',
                             width: '300px',
                             height: '29px',
                             left: '423px',
-                            top: '478px',
+                            top: '50%',
                             fontFamily: 'Advent Pro',
                             fontStyle: 'normal',
                             fontWeight: 250,
@@ -144,72 +214,153 @@ function PostInvite(){
                             width: '805px',
                             height: '167px',
                             left: '550px',
-                            top: '507px',
+                            top: '53%',
                             background: 'linear-gradient(180deg, rgba(17, 27, 37, 0.72) 0%, rgba(29, 44, 73, 0.44) 100%)',
                             opacity: 0.8,
                             borderRadius: '8.13679px',
                         }}
                          />
-                        <Grid container alignItems="center">
-                            <img src={individual} />
-                            <Typography variant="body1">Número de jogadores no grupo: </Typography>
-                            <Select value={value} onChange={e => setNumPlayers(e.target.value)}>
-                                <MenuItem value="" />
-                                <MenuItem value='1'>1</MenuItem>
-                                <MenuItem value='2'>2</MenuItem>
-                                <MenuItem value='3'>3</MenuItem>
-                                <MenuItem value='4'>4</MenuItem>
-                            </Select>
-                        </Grid>
-                        <Grid container alignItems="center">
-                            <Typography variant="body1">Elo mínimo: </Typography>
-                            <Select value={value} onChange={e => setRankPlayers(e.target.value)}>
-                                <MenuItem value=""/>
-                                <MenuItem value='Ferro'>Ferro</MenuItem>
-                                <MenuItem value='Bronze'>Bronze</MenuItem>
-                                <MenuItem value='Prata'>Prata</MenuItem>
-                                <MenuItem value='Ouro'>Ouro</MenuItem>
-                                <MenuItem value='Platina'>Platina</MenuItem>
-                                <MenuItem value='Diamante'>Diamante</MenuItem>
-                                <MenuItem value='Ascendente'>Ascendente</MenuItem>
-                                <MenuItem value='Imortal'>Imortal</MenuItem>
-                                <MenuItem value='Radiante'>Radiante</MenuItem>
-                            </Select>
-                            <Select value={value} onChange={e => setRankPlayers(e.target.value)}>
-                                <MenuItem value=""/>
-                                <MenuItem value='Prata'>Prata</MenuItem>
-                                <MenuItem value='Ouro'>Ouro</MenuItem>
-                                <MenuItem value='Ak'>Ak</MenuItem>
-                                <MenuItem value='Xerife'>Xerife</MenuItem>
-                                <MenuItem value='Aguia'>Águia</MenuItem>
-                                <MenuItem value='Supremo'>Supremo</MenuItem>
-                                <MenuItem value='Global'>Global</MenuItem>
-                            </Select>
-                        </Grid>
-                        <Typography className={classes.text}
+                        <Box sx={{
+                            display: 'flex',
+                            alignItems: 'center',
+                        }}>
+                        <img src={individual} className={classes.indiv}/>
+                        <Typography sx={{
+                            position: 'absolute',
+                            width: 'auto',
+                            height: '29px',
+                            left: '25%',
+                            top: '70%',
+                            fontFamily: 'Advent Pro',
+                            fontStyle: 'normal',
+                            fontWeight: 250,
+                            fontSize: '30px',
+                            lineHeight: '29px',
+                            textAlign: 'right',
+                            color: '#FFFFFF',
+                        }}>
+                            Número de jogadores no grupo:
+                        </Typography>
+                        </Box>
+                        <Select value={numPlayers} 
+                        onChange={e => setNumPlayers(e.target.value)}
                         sx={{
                             position: 'absolute',
-                            width: '57px',
-                            height: '38px',
-                            left: '692px',
-                            top: '826px',
+                            left: '45%',
+                            top: '69.5%',
+                        }}
+                        labelId="demo-simple-select-label"
+                        id="demo-simple-select"
+                        label='test'
+                        >
+                            <MenuItem value="" />
+                            <MenuItem value='1'>1</MenuItem>
+                            <MenuItem value='2'>2</MenuItem>
+                            <MenuItem value='3'>3</MenuItem>
+                            <MenuItem value='4'>4</MenuItem>
+                        </Select>
+                    
+                        <Typography sx={{
+                            position: 'absolute',
+                            width: 'auto',
+                            height: '29px',
+                            left: '25%',
+                            top: '80%',
+                            fontFamily: 'Advent Pro',
+                            fontStyle: 'normal',
+                            fontWeight: 250,
+                            fontSize: '30px',
+                            lineHeight: '29px',
+                            textAlign: 'right',
+                            color: '#FFFFFF',
+                        }}>
+                            Elo mínimo: </Typography>
+                        <Select value={rankPlayers} onChange={e => setRankPlayers(e.target.value)}>
+                            <MenuItem value="Sem rank"/>
+                            <MenuItem value='Ferro'>Ferro</MenuItem>
+                            <MenuItem value='Bronze'>Bronze</MenuItem>
+                            <MenuItem value='Prata'>Prata</MenuItem>
+                            <MenuItem value='Ouro'>Ouro</MenuItem>
+                            <MenuItem value='Platina'>Platina</MenuItem>
+                            <MenuItem value='Diamante'>Diamante</MenuItem>
+                            <MenuItem value='Ascendente'>Ascendente</MenuItem>
+                            <MenuItem value='Imortal'>Imortal</MenuItem>
+                            <MenuItem value='Radiante'>Radiante</MenuItem>
+                        </Select>
+                        <Select value={rankPlayers} onChange={e => setRankPlayers(e.target.value)}>
+                            <MenuItem value="Sem rank"/>
+                            <MenuItem value='Prata'>Prata</MenuItem>
+                            <MenuItem value='Ouro'>Ouro</MenuItem>
+                            <MenuItem value='Ak'>Ak</MenuItem>
+                            <MenuItem value='Xerife'>Xerife</MenuItem>
+                            <MenuItem value='Aguia'>Águia</MenuItem>
+                            <MenuItem value='Supremo'>Supremo</MenuItem>
+                            <MenuItem value='Global'>Global</MenuItem>
+                        </Select>
+                        <Typography sx={{
+                            position: 'absolute',
+                            width: 'auto',
+                            height: '29px',
+                            top: '90%',
+                            fontFamily: 'Advent Pro',
+                            fontStyle: 'normal',
+                            fontWeight: 250,
+                            fontSize: '30px',
+                            lineHeight: '29px',
+                            textAlign: 'center',
+                            color: '#FFFFFF',
                         }}>
                             Tags:
                         </Typography>
                         <Typography className={classes.text}
-                        value={value} onChange={e => setMotivation(e.target.value)}
+                        value={motivation} onChange={e => setMotivation(e.target.value)}
                         sx={{
-                            
+                            position: 'absolute',
+                            width: 'auto',
+                            height: '29px',
+                            left: '25%',
+                            top: '95%',
+                            fontFamily: 'Advent Pro',
+                            fontStyle: 'normal',
+                            fontWeight: 250,
+                            fontSize: '30px',
+                            lineHeight: '29px',
+                            textAlign: 'right',
+                            color: '#FFFFFF',
                         }}>
                             Motivação:
                         </Typography>
                         <Typography className={classes.text}
-                        value={value} onChange={e => setCommunication(e.target.value)}
+                        value={communication} onChange={e => setCommunication(e.target.value)}
                         sx={{
-                            
+                            position: 'absolute',
+                            width: 'auto',
+                            height: '29px',
+                            left: '25%',
+                            top: '105%',
+                            fontFamily: 'Advent Pro',
+                            fontStyle: 'normal',
+                            fontWeight: 250,
+                            fontSize: '30px',
+                            lineHeight: '29px',
+                            textAlign: 'right',
+                            color: '#FFFFFF',
                         }}>
                             Comunicação:
                         </Typography>
+                        <MainButton className={classes.post} onClick={handlePostInvite}>
+                            <Typography sx={{
+                                fontFamily: 'PostNoBillsJaffna',
+                                fontStyle: 'normal',
+                                fontWeight: 500,
+                                fontSize: '30px',
+                                lineHeight: '25px',
+                                textAlign: 'center',
+                                color: '#FFFFFF',
+                            }}>
+                                Postar Convite
+                            </Typography>
+                        </MainButton>
                     </Box>
                 </Grid>
             </Grid>
