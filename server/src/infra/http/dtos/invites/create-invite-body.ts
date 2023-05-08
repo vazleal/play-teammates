@@ -6,6 +6,7 @@ export const createInviteBody = z.object({
   game: z.string().nonempty(),
   notes: z.string().nonempty(),
   numPlayers: z.number(),
-  rankPlayers: z.array(z.string()),
-  tags: z.array(z.string())
+  rankPlayers: z.string().nonempty(),
+  motivation: z.string().nonempty(),
+  communication: z.string().nonempty()
 })

@@ -8,12 +8,12 @@ import {
 
 import Navbar from '../components/Navbar.jsx'
 import Background from '../components/Background.jsx'
-
 import Home from '../pages/Home.jsx'
 import { SignUp } from '../pages/SignUp'
 import { SignIn } from '../pages/SignIn'
 import { Profile } from '../pages/Profile.jsx'
 import AllInvites from '../pages/AllInvites.jsx'
+import PostInvite from '../pages/PostInvite.jsx'
 import InviteCS from '../pages/InviteCS.jsx'
 import InviteVal from '../pages/InviteVal.jsx'
 
@@ -76,8 +76,16 @@ export function Routes() {
               </ProtectedRoute>
             }
           />
-          <Route path="/inviteCS" element={<InviteCS />} />
+          <Route 
+            path="/postInvite" 
+            element={
+              <ProtectedRoute isAuthenticated={isAuthenticated}>
+                <PostInvite />
+              </ProtectedRoute>
+            }
+          />
           <Route path="/inviteVal" element={<InviteVal />} />
+          <Route path="/inviteCS" element={<InviteCS />} />
           <Route path="/allInvites" element={<AllInvites />} />
         </Route>
       </Router>
