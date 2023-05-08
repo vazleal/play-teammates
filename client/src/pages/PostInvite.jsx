@@ -40,10 +40,10 @@ const useStyles = makeStyles({
     }
 })
 
-function handleModalOpen(message) {
+/*function handleModalOpen(message) {
     setModalOpen(true)
     setErrorMessage(message)
-}
+}*/
 
 function PostInvite(){
     const { user } = useAuth();
@@ -52,45 +52,42 @@ function PostInvite(){
 
     const classes = useStyles();
 
-    const [game, setGame] = useState(null);
+    const [game, setGame] = useState('');
 
-    const [isRanked, setIsRanked] = useState(null);
+    const [isRanked, setIsRanked] = useState(0);
 
-    const [communication, setCommunication] = useState(null);
+    const [communication, setCommunication] = useState('');
 
-    const [notes, setNotes] = useState(null);
+    const [notes, setNotes] = useState('');
 
-    const [numPlayers, setNumPlayers] = useState(null);
+    const [numPlayers, setNumPlayers] = useState(0);
 
-    const [rankPlayers, setRankPlayers] = useState(null);
+    const [rankPlayers, setRankPlayers] = useState('');
 
-    const [motivation, setMotivation] = useState(null);
-
-    const [modalOpen, setModalOpen] = useState(false);
-    const [errorMessage, setErrorMessage] = useState(null);
+    const [motivation, setMotivation] = useState('');
 
     async function handlePostInvite (event) {
         if (!numPlayers){
-            handleModalOpen('Por favor, a quantidade de jogadores que estão no grupo')
+            console.error('Por favor, a quantidade de jogadores que estão no grupo')
             return
         }
         if (!game){
-            handleModalOpen('Por favor, informe o jogo do convite')
+            console.error('Por favor, informe o jogo do convite')
             return
         }
         if (!rankPlayers){
-            handleModalOpen('Por favor, informe o elo mínimo para participar do seu grupo')
+            console.error('Por favor, informe o elo mínimo para participar do seu grupo')
             return
         }
         if (!motivation){
-            handleModalOpen('Por favor, informe a motivação do convite')
+            console.error('Por favor, informe a motivação do convite')
             return
         }
         if (!communication){
             handleModalOpen('Por favor, informe qual a categoria de comunicação')
             return
         }
-        if (!isRanked){
+        if (0==isRanked){
             handleModalOpen('Por favor, informe se é ranqueada ou não')
             return
         }
@@ -111,7 +108,7 @@ function PostInvite(){
       
             navigate('/')
           } catch (err) {
-            toast.error(getErrorMessage(err))
+            console.error('Não foi possível criar o convite')
           }
     };
 
@@ -271,7 +268,7 @@ function PostInvite(){
                         }}>
                             Elo mínimo: 
                         </Typography>
-                        { (game=="Counter Strike") ? (
+                        { (game!="Valorant") ? (
                             <Select value={rankPlayers} onChange={e => setRankPlayers(e.target.value)}>
                                 <MenuItem value="Sem rank"/>
                                 <MenuItem value='Prata'>Prata</MenuItem>
