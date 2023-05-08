@@ -23,42 +23,33 @@ export function SignUp() {
   const [modalOpen, setModalOpen] = useState(false)
   const [errorMessage, setErrorMessage] = useState(null)
 
-  const [emailError, setEmailError] = useState(false)
-  const [passwordError, setPasswordError] = useState(false)
-  const [userError, setUserError] = useState(false)
-
-  const [openModal, setOpenModal] = useState(false)
-
   const navigate = useNavigate()
 
-  const handleModalOpen = message => {
+  function handleModalOpen(message) {
     setModalOpen(true)
     setErrorMessage(message)
   }
 
-  async function handleSignUp() {
+  async function handleSignUp(event) {
+    event.preventDefault()
+
     if (!username) {
-      alert('Please enter a username')
+      handleModalOpen('Por favor, insira um nome de usuário válido.')
       return
     }
-    if (!email) {
-      alert('Please enter an email')
-      return
-    }
-    if (!password) {
-      alert('Please enter a password')
-      return
-    }
-    if (password !== confirmPassword) {
-      alert('Passwords do not match')
-      return
-    }
+
     if (!email || !/\S+@\S+\.\S+/.test(email)) {
-      handleModalOpen('Por favor, insira um endereço de e-mail válido')
+      handleModalOpen('Por favor, insira um endereço de e-mail válido.')
       return
     }
-    if (!password || password.length < 8) {
-      handleModalOpen('A senha precisa ter pelo menos oito caracteres')
+
+    if (!password || password.length < 6) {
+      handleModalOpen('A senha precisa ter pelo menos seis caracteres.')
+      return
+    }
+
+    if (password !== confirmPassword) {
+      handleModalOpen('A senha e a confirmação de senha não são iguais.')
       return
     }
 
@@ -69,7 +60,7 @@ export function SignUp() {
         password
       })
 
-      toast.success('Account successfully created!')
+      toast.success('Conta criada com sucesso!')
 
       navigate('/sign-in')
     } catch (err) {
@@ -78,93 +69,133 @@ export function SignUp() {
   }
 
   return (
-    <Box
-      sx={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        height: '100vh'
-      }}
-    >
-      <ProfileContainer
+    <>
+      <Box
         sx={{
-          height: '570px'
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          marginTop: '180px'
         }}
       >
-        <TypoMain
-          sx={{
-            fontSize: '48px',
-            padding: '0px 0px 10px 0px'
-          }}
-        >
-          Cadastre-se{' '}
-        </TypoMain>
+        <ProfileContainer>
+          <TypoMain
+            sx={{
+              fontSize: '44px',
+              padding: '0px 0px 10px 0px'
+            }}
+          >
+            Cadastre-se
+          </TypoMain>
 
-        <TypoSecond>Escolha um nome de usuário</TypoSecond>
-        <WhiteTextField
-          label="seu nome de usuário aqui"
-          value={username}
-          onChange={e => setUsername(e.target.value)}
-          sx={{
-            width: '100%'
-          }}
-        />
-
-        <TypoSecond>Seu e-mail</TypoSecond>
-        <WhiteTextField
-          label="seu e-mail aqui"
-          type="email"
-          value={email}
-          onChange={e => setEmail(e.target.value)}
-          sx={{
-            width: '100%'
-          }}
-        />
-
-        <Grid container>
-          <Grid item xs={6}>
-            <TypoSecond>Crie uma senha</TypoSecond>
+          <form onSubmit={handleSignUp}>
+            <TypoSecond>Escolha um nome de usuário:</TypoSecond>
             <WhiteTextField
-              label="insira sua senha"
-              type="password"
-              value={password}
-              onChange={e => setPassword(e.target.value)}
-              sx={{
-                width: '98%'
-              }}
-            />
-          </Grid>
-          <Grid item xs={6}>
-            <TypoSecond>Repita sua senha</TypoSecond>
-            <WhiteTextField
-              label="insira sua senha novamente"
-              type="password"
-              value={confirmPassword}
-              onChange={e => setConfirmPassword(e.target.value)}
+              value={username}
+              onChange={e => setUsername(e.target.value)}
               sx={{
                 width: '100%'
               }}
             />
-          </Grid>
-        </Grid>
-        <Box
-          sx={{
-            justifyContent: 'center',
-            display: 'flex',
-            alignItems: 'center'
-          }}
-        >
-          <MainButton onClick={handleSignUp}>
-            <TypoMain
+
+            <TypoSecond sx={{ marginTop: '-18px' }}>Seu e-mail:</TypoSecond>
+            <WhiteTextField
+              type="email"
+              value={email}
+              onChange={e => setEmail(e.target.value)}
               sx={{
-                fontSize: '25px'
+                width: '100%'
+              }}
+            />
+
+            <Box
+              sx={{
+                marginTop: '-18px',
+                width: '100%',
+                display: 'flex',
+                flexDirection: 'row',
+                gap: '12px'
               }}
             >
-              Criar Conta
-            </TypoMain>
-          </MainButton>
+              <Box
+                sx={{
+                  width: '100%'
+                }}
+              >
+                <TypoSecond>Crie uma senha:</TypoSecond>
+                <WhiteTextField
+                  type="password"
+                  value={password}
+                  onChange={e => setPassword(e.target.value)}
+                  sx={{
+                    width: '100%'
+                  }}
+                />
+              </Box>
+
+              <Box
+                sx={{
+                  width: '100%'
+                }}
+              >
+                <TypoSecond>Repita sua senha:</TypoSecond>
+                <WhiteTextField
+                  type="password"
+                  value={confirmPassword}
+                  onChange={e => setConfirmPassword(e.target.value)}
+                  sx={{
+                    width: '100%'
+                  }}
+                />
+              </Box>
+            </Box>
+            <Box
+              sx={{
+                justifyContent: 'center',
+                display: 'flex',
+                alignItems: 'center'
+              }}
+            >
+              <MainButton type="submit">
+                <TypoMain
+                  sx={{
+                    fontSize: '25px'
+                  }}
+                >
+                  Cadastrar
+                </TypoMain>
+              </MainButton>
+            </Box>
+          </form>
+        </ProfileContainer>
+      </Box>
+
+      <Modal open={modalOpen} onClose={() => setModalOpen(false)}>
+        <Box
+          sx={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            background: 'linear-gradient(180deg, #1D2C49 0%, #0F1922 100%)',
+            borderRadius: '8px',
+            boxShadow: 24,
+            p: 4,
+            maxWidth: '90vw',
+            maxHeight: '90vh',
+            overflow: 'auto'
+          }}
+        >
+          <TypoMain
+            sx={{
+              fontSize: '24px'
+            }}
+          >
+            Erro
+          </TypoMain>
+          <TypoSecond>{errorMessage}</TypoSecond>
         </Box>
-      </ProfileContainer>
-    </Box>
+      </Modal>
+    </>
   )
 }

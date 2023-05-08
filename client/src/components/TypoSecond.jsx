@@ -8,7 +8,7 @@ function TypoSecond(props) {
       {...props}
       sx={{
         fontFamily: 'AdventPro !important',
-        fontSize: '24px',
+        fontSize: '22px',
         color: 'white',
         ...(props.sx || {})
       }}

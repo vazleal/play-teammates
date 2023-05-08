@@ -19,6 +19,11 @@ export const AuthProvider = ({ children }) => {
 
   const isAuthenticated = !!user
 
+  const updateUser = useCallback(userData => {
+    setUser(userData)
+    localStorage.setItem('@teammates:user', JSON.stringify(userData))
+  })
+
   const signIn = useCallback(async signInCredentials => {
     const response = await api.post('/sessions', {
       ...signInCredentials
@@ -46,7 +51,8 @@ export const AuthProvider = ({ children }) => {
       user,
       isAuthenticated,
       signIn,
-      signOut
+      signOut,
+      updateUser
     }),
     [user]
   )

@@ -18,9 +18,6 @@ export function SignIn() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  const [emailError, setEmailError] = useState(false)
-  const [passwordError, setPasswordError] = useState(false)
-
   const [modalOpen, setModalOpen] = useState(false)
   const [errorMessage, setErrorMessage] = useState(null)
 
@@ -29,19 +26,17 @@ export function SignIn() {
     setErrorMessage(message)
   }
 
-  async function handleSubmit() {
+  async function handleSubmit(event) {
+    event.preventDefault()
+
     if (!email || !/\S+@\S+\.\S+/.test(email)) {
       handleModalOpen('Por favor, insira um endereço de e-mail válido')
       return
-    } else {
-      setEmailError(false)
     }
 
     if (!password || password.length < 6) {
       handleModalOpen('A senha precisa ter pelo menos seis caracteres')
       return
-    } else {
-      setPasswordError(false)
     }
 
     try {
@@ -52,74 +47,67 @@ export function SignIn() {
   }
 
   return (
-    <Box
-      sx={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        height: '100vh'
-      }}
-    >
-      <ProfileContainer
+    <>
+      <Box
         sx={{
-          height: '430px'
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          marginTop: '220px'
         }}
       >
-        <TypoMain
-          sx={{
-            fontSize: '48px',
-            padding: '0px 0px 10px 0px'
-          }}
-        >
-          Entre na sua conta{' '}
-        </TypoMain>
+        <ProfileContainer sx={{ width: '720px' }}>
+          <TypoMain
+            sx={{
+              fontSize: '44px',
+              padding: '0px 0px 10px 0px'
+            }}
+          >
+            Entre na sua conta
+          </TypoMain>
 
-        <TypoSecond>Seu e-mail </TypoSecond>
-        <WhiteTextField
-          label="seu e-mail aqui"
-          type="email"
-          sx={{
-            width: '100%'
-          }}
-          value={email}
-          onChange={e => setEmail(e.target.value)}
-          error={emailError}
-          helperText={
-            emailError ? 'Por favor, insira um endereço de e-mail válido' : ''
-          }
-        />
-
-        <TypoSecond>Sua senha </TypoSecond>
-        <WhiteTextField
-          label="insira sua senha"
-          type="password"
-          sx={{
-            width: '100%'
-          }}
-          value={password}
-          onChange={e => setPassword(e.target.value)}
-          error={passwordError}
-          helperText={passwordError ? 'Por favor, insira uma senha válida' : ''}
-        />
-
-        <Box
-          sx={{
-            justifyContent: 'center',
-            display: 'flex',
-            alignItems: 'center'
-          }}
-        >
-          <MainButton onClick={handleSubmit}>
-            <TypoMain
+          <form onSubmit={handleSubmit}>
+            <TypoSecond>Seu e-mail:</TypoSecond>
+            <WhiteTextField
+              type="email"
               sx={{
-                fontSize: '25px'
+                width: '100%'
+              }}
+              value={email}
+              onChange={e => setEmail(e.target.value)}
+            />
+
+            <TypoSecond sx={{ marginTop: '-18px' }}>Sua senha:</TypoSecond>
+            <WhiteTextField
+              type="password"
+              sx={{
+                width: '100%'
+              }}
+              value={password}
+              onChange={e => setPassword(e.target.value)}
+            />
+
+            <Box
+              sx={{
+                justifyContent: 'center',
+                display: 'flex',
+                alignItems: 'center'
               }}
             >
-              Entrar
-            </TypoMain>
-          </MainButton>
-        </Box>
-      </ProfileContainer>
+              <MainButton type="submit">
+                <TypoMain
+                  sx={{
+                    fontSize: '25px'
+                  }}
+                >
+                  Entrar
+                </TypoMain>
+              </MainButton>
+            </Box>
+          </form>
+        </ProfileContainer>
+      </Box>
+
       <Modal open={modalOpen} onClose={() => setModalOpen(false)}>
         <Box
           sx={{
@@ -146,6 +134,6 @@ export function SignIn() {
           <TypoSecond>{errorMessage}</TypoSecond>
         </Box>
       </Modal>
-    </Box>
+    </>
   )
 }
