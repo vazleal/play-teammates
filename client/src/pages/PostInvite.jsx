@@ -52,8 +52,6 @@ function PostInvite(){
 
     const classes = useStyles();
 
-    const [value, setValue] = useState('');
-
     const [game, setGame] = useState(null);
 
     const [isRanked, setIsRanked] = useState(null);
@@ -111,7 +109,7 @@ function PostInvite(){
       
             toast.success('Convite criado com sucesso!')
       
-            navigate('/home')
+            navigate('/')
           } catch (err) {
             toast.error(getErrorMessage(err))
           }
@@ -249,9 +247,6 @@ function PostInvite(){
                             left: '45%',
                             top: '69.5%',
                         }}
-                        labelId="demo-simple-select-label"
-                        id="demo-simple-select"
-                        label='test'
                         >
                             <MenuItem value="" />
                             <MenuItem value='1'>1</MenuItem>
@@ -259,7 +254,7 @@ function PostInvite(){
                             <MenuItem value='3'>3</MenuItem>
                             <MenuItem value='4'>4</MenuItem>
                         </Select>
-                    
+                        
                         <Typography sx={{
                             position: 'absolute',
                             width: 'auto',
@@ -274,29 +269,35 @@ function PostInvite(){
                             textAlign: 'right',
                             color: '#FFFFFF',
                         }}>
-                            Elo mínimo: </Typography>
-                        <Select value={rankPlayers} onChange={e => setRankPlayers(e.target.value)}>
-                            <MenuItem value="Sem rank"/>
-                            <MenuItem value='Ferro'>Ferro</MenuItem>
-                            <MenuItem value='Bronze'>Bronze</MenuItem>
-                            <MenuItem value='Prata'>Prata</MenuItem>
-                            <MenuItem value='Ouro'>Ouro</MenuItem>
-                            <MenuItem value='Platina'>Platina</MenuItem>
-                            <MenuItem value='Diamante'>Diamante</MenuItem>
-                            <MenuItem value='Ascendente'>Ascendente</MenuItem>
-                            <MenuItem value='Imortal'>Imortal</MenuItem>
-                            <MenuItem value='Radiante'>Radiante</MenuItem>
-                        </Select>
-                        <Select value={rankPlayers} onChange={e => setRankPlayers(e.target.value)}>
-                            <MenuItem value="Sem rank"/>
-                            <MenuItem value='Prata'>Prata</MenuItem>
-                            <MenuItem value='Ouro'>Ouro</MenuItem>
-                            <MenuItem value='Ak'>Ak</MenuItem>
-                            <MenuItem value='Xerife'>Xerife</MenuItem>
-                            <MenuItem value='Aguia'>Águia</MenuItem>
-                            <MenuItem value='Supremo'>Supremo</MenuItem>
-                            <MenuItem value='Global'>Global</MenuItem>
-                        </Select>
+                            Elo mínimo: 
+                        </Typography>
+                        { (game=="Counter Strike") ? (
+                            <Select value={rankPlayers} onChange={e => setRankPlayers(e.target.value)}>
+                                <MenuItem value="Sem rank"/>
+                                <MenuItem value='Prata'>Prata</MenuItem>
+                                <MenuItem value='Ouro'>Ouro</MenuItem>
+                                <MenuItem value='Ak'>Ak</MenuItem>
+                                <MenuItem value='Xerife'>Xerife</MenuItem>
+                                <MenuItem value='Aguia'>Águia</MenuItem>
+                                <MenuItem value='Supremo'>Supremo</MenuItem>
+                                <MenuItem value='Global'>Global</MenuItem>
+                            </Select>
+                        ) : (
+                            <Select value={rankPlayers} onChange={e => setRankPlayers(e.target.value)}>
+                                <MenuItem value="Sem rank"/>
+                                <MenuItem value='Ferro'>Ferro</MenuItem>
+                                <MenuItem value='Bronze'>Bronze</MenuItem>
+                                <MenuItem value='Prata'>Prata</MenuItem>
+                                <MenuItem value='Ouro'>Ouro</MenuItem>
+                                <MenuItem value='Platina'>Platina</MenuItem>
+                                <MenuItem value='Diamante'>Diamante</MenuItem>
+                                <MenuItem value='Ascendente'>Ascendente</MenuItem>
+                                <MenuItem value='Imortal'>Imortal</MenuItem>
+                                <MenuItem value='Radiante'>Radiante</MenuItem>
+                            </Select>
+                        )
+                        }
+                        
                         <Typography sx={{
                             position: 'absolute',
                             width: 'auto',
@@ -313,7 +314,6 @@ function PostInvite(){
                             Tags:
                         </Typography>
                         <Typography className={classes.text}
-                        value={motivation} onChange={e => setMotivation(e.target.value)}
                         sx={{
                             position: 'absolute',
                             width: 'auto',
@@ -330,8 +330,11 @@ function PostInvite(){
                         }}>
                             Motivação:
                         </Typography>
+                            <Select value={motivation} onChange={e => setMotivation(e.target.value)}>
+                                <MenuItem value='Serio'>Sério</MenuItem>
+                                <MenuItem value='For fun'>For fun</MenuItem>
+                            </Select>
                         <Typography className={classes.text}
-                        value={communication} onChange={e => setCommunication(e.target.value)}
                         sx={{
                             position: 'absolute',
                             width: 'auto',
@@ -348,6 +351,10 @@ function PostInvite(){
                         }}>
                             Comunicação:
                         </Typography>
+                        <Select value={communication} onChange={e => setCommunication(e.target.value)}>
+                                <MenuItem value='obrigatorio'>Microfone obrigatório</MenuItem>
+                                <MenuItem value='opcional'>Microfone opcional</MenuItem>
+                            </Select>
                         <MainButton className={classes.post} onClick={handlePostInvite}>
                             <Typography sx={{
                                 fontFamily: 'PostNoBillsJaffna',
