@@ -1,4 +1,4 @@
-import { Box, Grid, MenuItem, Select, TextField, ToggleButton, ToggleButtonGroup, Typography } from '@mui/material'
+import { Box, MenuItem, Select, TextField, ToggleButton, ToggleButtonGroup, Typography } from '@mui/material'
 import '../fonts.css'
 import individual from '../assets/images/vectors/individual.svg';
 import { useState } from 'react';
@@ -133,9 +133,9 @@ function PostInvite() {
           boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
         }} className={classes.mainBox}>
           <ToggleButtonGroup
-            value={isRanked} // o valor do botão selecionado atualmente
-            exclusive // define que apenas um botão pode ser selecionado por vez
-            onChange={(e, value) => setIsRanked(value)} // função chamada quando um botão é selecionado
+            value={isRanked}
+            exclusive
+            onChange={(e, value) => setIsRanked(value)}
             aria-label="Selecionar rankeada ou não"
             sx={{
               position: 'absolute',
