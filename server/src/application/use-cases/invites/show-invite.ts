@@ -17,12 +17,17 @@ export class ShowInvite {
     const { inviteId } = request
 
     const invite = await prisma.invite.findUnique({
-      where: { id: inviteId }
+      where: { id: inviteId },
+      include: {
+        user: true
+      }
     })
 
     if (!invite) {
       throw new InviteNotFound()
     }
+
+    delete invite.user.password
 
     return { invite }
   }

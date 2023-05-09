@@ -7,7 +7,7 @@ import { createInviteBody } from '@/infra/http/dtos/invites/create-invite-body'
 import { ShowInvite } from '@/application/use-cases/invites/show-invite'
 import { showInviteParams } from '@/infra/http/dtos/invites/show-invite-params'
 
-import { FilterInvites } from '@/application/use-cases/invites/filter-invite'
+import { FilterInvites } from '@/application/use-cases/invites/filter-invites'
 import { filterInvitesParams } from '@/infra/http/dtos/invites/filter-invite-params'
 
 import { InviteViewModel } from '@/infra/http/view-models/invites-view-model'
