@@ -34,7 +34,8 @@ export class CreateUser {
 
     const hashedPassword = await hash(password, 10)
 
-    const avatarUrl = `https://api.multiavatar.com/${username}`
+    const avatarUrl = `https://api.dicebear.com/6.x/adventurer/svg?seed=${username}&scale=110&backgroundColor=c0aede,d1d4f9,ffd5dc,ffdfbf`
+
     const user = await prisma.user.create({
       data: {
         username,

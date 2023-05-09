@@ -12,9 +12,13 @@ export const errorHandler: ErrorRequestHandler = (
   if (error instanceof ZodError) {
     const errors = error.issues
 
-    return response
-      .status(400)
-      .json({ statusCode: 400, error: 'Validation Fails', errors })
+    return response.status(400).json({
+      statusCode: 400,
+      error: 'Validation Fails',
+      message:
+        'Falha ao processar as informações. Verifique os dados enviados.',
+      errors
+    })
   }
 
   console.log(error)
@@ -30,6 +34,6 @@ export const errorHandler: ErrorRequestHandler = (
   return response.status(500).json({
     statusCode: 500,
     error: 'Internal Error',
-    message: 'Internal server error.'
+    message: 'Erro interno do servidor.'
   })
 }

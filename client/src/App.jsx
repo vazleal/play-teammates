@@ -5,11 +5,14 @@ import { ToastContainer } from 'react-toastify'
 
 import 'react-toastify/dist/ReactToastify.css'
 
+import './styles/globals.css'
+import './fonts.css'
+
 export function App() {
   return (
     <AuthProvider>
       <Routes />
-      <ToastContainer theme="dark" />
+      <ToastContainer theme="colored" />
     </AuthProvider>
   )
 }
