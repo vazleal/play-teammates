@@ -48,26 +48,23 @@ function handleModalOpen(message) {
 function PostInvite() {
   const { user } = useAuth();
 
-  const navigate = useNavigate();
+    const navigate = useNavigate();
 
-  const classes = useStyles();
+    const classes = useStyles();
 
-  const [game, setGame] = useState(null);
+    const [game, setGame] = useState('');
 
-  const [isRanked, setIsRanked] = useState(null);
+    const [isRanked, setIsRanked] = useState(0);
 
-  const [communication, setCommunication] = useState(null);
+    const [communication, setCommunication] = useState('');
 
-  const [notes, setNotes] = useState(null);
+    const [notes, setNotes] = useState('');
 
-  const [numPlayers, setNumPlayers] = useState(null);
+    const [numPlayers, setNumPlayers] = useState(0);
 
-  const [rankPlayers, setRankPlayers] = useState(null);
+    const [rankPlayers, setRankPlayers] = useState('');
 
-  const [motivation, setMotivation] = useState(null);
-
-  const [modalOpen, setModalOpen] = useState(false);
-  const [errorMessage, setErrorMessage] = useState(null);
+    const [motivation, setMotivation] = useState('');
 
     async function handlePostInvite(event) {
       if (!numPlayers) {
@@ -174,12 +171,12 @@ function PostInvite() {
                 minWidth: '500px',
               }}
             >
-              <ToggleButton value="Counter Strike" aria-label="CS" sx={{ background: '#F00F15', }}>
+              <ToggleButton value="counter-strike" aria-label="CS" sx={{ background: '#F00F15', }}>
                 <Typography className={classes.textMilitary} sx={{ width: '500' }}>
                   Counter Strike
                 </Typography>
               </ToggleButton>
-              <ToggleButton value="Valorant" aria-label="Valorant" sx={{
+              <ToggleButton value="valorant" aria-label="Valorant" sx={{
                 background: '#F00F15',
               }}>
                 <Typography className={classes.textMilitary}>
@@ -251,10 +248,10 @@ function PostInvite() {
               }}
             >
               <MenuItem value="" />
-              <MenuItem value='1'>1</MenuItem>
-              <MenuItem value='2'>2</MenuItem>
-              <MenuItem value='3'>3</MenuItem>
-              <MenuItem value='4'>4</MenuItem>
+              <MenuItem value={1}>1</MenuItem>
+              <MenuItem value={2}>2</MenuItem>
+              <MenuItem value={3}>3</MenuItem>
+              <MenuItem value={4}>4</MenuItem>
             </Select>
 
             <Typography sx={{
@@ -275,27 +272,27 @@ function PostInvite() {
             </Typography>
             {(game != "Valorant") ? (
               <Select value={rankPlayers} onChange={e => setRankPlayers(e.target.value)}>
-                <MenuItem value="Sem rank" />
-                <MenuItem value='Prata'>Prata</MenuItem>
-                <MenuItem value='Ouro'>Ouro</MenuItem>
-                <MenuItem value='Ak'>Ak</MenuItem>
-                <MenuItem value='Xerife'>Xerife</MenuItem>
-                <MenuItem value='Aguia'>Águia</MenuItem>
-                <MenuItem value='Supremo'>Supremo</MenuItem>
-                <MenuItem value='Global'>Global</MenuItem>
+                <MenuItem value="unranking" />
+                <MenuItem value='prata'>Prata</MenuItem>
+                <MenuItem value='ouro'>Ouro</MenuItem>
+                <MenuItem value='ak'>Ak</MenuItem>
+                <MenuItem value='xerife'>Xerife</MenuItem>
+                <MenuItem value='aguia'>Águia</MenuItem>
+                <MenuItem value='supremo'>Supremo</MenuItem>
+                <MenuItem value='global'>Global</MenuItem>
               </Select>
             ) : (
               <Select value={rankPlayers} onChange={e => setRankPlayers(e.target.value)}>
                 <MenuItem value="Sem rank" />
-                <MenuItem value='Ferro'>Ferro</MenuItem>
-                <MenuItem value='Bronze'>Bronze</MenuItem>
-                <MenuItem value='Prata'>Prata</MenuItem>
-                <MenuItem value='Ouro'>Ouro</MenuItem>
-                <MenuItem value='Platina'>Platina</MenuItem>
-                <MenuItem value='Diamante'>Diamante</MenuItem>
-                <MenuItem value='Ascendente'>Ascendente</MenuItem>
-                <MenuItem value='Imortal'>Imortal</MenuItem>
-                <MenuItem value='Radiante'>Radiante</MenuItem>
+                <MenuItem value='ferro'>Ferro</MenuItem>
+                <MenuItem value='bronze'>Bronze</MenuItem>
+                <MenuItem value='prata'>Prata</MenuItem>
+                <MenuItem value='ouro'>Ouro</MenuItem>
+                <MenuItem value='platina'>Platina</MenuItem>
+                <MenuItem value='diamante'>Diamante</MenuItem>
+                <MenuItem value='ascendente'>Ascendente</MenuItem>
+                <MenuItem value='imortal'>Imortal</MenuItem>
+                <MenuItem value='radiante'>Radiante</MenuItem>
               </Select>
             )
             }
@@ -333,8 +330,8 @@ function PostInvite() {
               Motivação:
             </Typography>
             <Select value={motivation} onChange={e => setMotivation(e.target.value)}>
-              <MenuItem value='Serio'>Sério</MenuItem>
-              <MenuItem value='For fun'>For fun</MenuItem>
+              <MenuItem value='serio'>Jogando sério</MenuItem>
+              <MenuItem value='diversao'>Jogando por diversão</MenuItem>
             </Select>
             <Typography className={classes.text}
               sx={{
@@ -354,8 +351,8 @@ function PostInvite() {
               Comunicação:
             </Typography>
             <Select value={communication} onChange={e => setCommunication(e.target.value)}>
-              <MenuItem value='obrigatorio'>Microfone obrigatório</MenuItem>
-              <MenuItem value='opcional'>Microfone opcional</MenuItem>
+              <MenuItem value='discord'>Discord obrigatório</MenuItem>
+              <MenuItem value='ingame'>Dentro do jogo</MenuItem>
             </Select>
             <MainButton className={classes.post} onClick={handlePostInvite}>
               <Typography sx={{
