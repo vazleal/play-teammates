@@ -3,6 +3,7 @@ import { prisma } from '@/database/prisma'
 import { type Invite } from '@prisma/client'
 
 interface CreateInviteRequest {
+  userId: string
   isRanked: boolean
   game: string
   notes: string
@@ -10,7 +11,6 @@ interface CreateInviteRequest {
   rankPlayers: string
   motivation: string
   communication: string
-  userId: string
 }
 
 interface CreateInviteResponse {
@@ -32,14 +32,14 @@ export class CreateInvite {
 
     const invite = await prisma.invite.create({
       data: {
-        userId,
         isRanked,
         game,
         notes,
         numPlayers,
         rankPlayers,
         motivation,
-        communication
+        communication,
+        userId
       }
     })
 
