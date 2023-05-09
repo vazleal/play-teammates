@@ -125,7 +125,7 @@ export function Profile() {
                   width: '100%'
                 }}
               >
-                <TypoSecond sx={{ fontFamily: 'Advent Pro', color: '#fff' }}>
+                <TypoSecond sx={{ fontFamily: 'AdventPro', color: '#fff' }}>
                   Riot ID:
                 </TypoSecond>
                 <WhiteTextField
@@ -142,7 +142,7 @@ export function Profile() {
                   width: '100%'
                 }}
               >
-                <TypoSecond sx={{ fontFamily: 'Advent Pro', color: '#fff' }}>
+                <TypoSecond sx={{ fontFamily: 'AdventPro', color: '#fff' }}>
                   Link do perfil da Steam:
                 </TypoSecond>
                 <WhiteTextField
@@ -169,7 +169,7 @@ export function Profile() {
                   width: '100%'
                 }}
               >
-                <TypoSecond sx={{ fontFamily: 'Advent Pro', color: '#fff' }}>
+                <TypoSecond sx={{ fontFamily: 'AdventPro', color: '#fff' }}>
                   Riot Tag:
                 </TypoSecond>
                 <WhiteTextField
@@ -186,7 +186,7 @@ export function Profile() {
                   width: '100%'
                 }}
               >
-                <TypoSecond sx={{ fontFamily: 'Advent Pro', color: '#fff' }}>
+                <TypoSecond sx={{ fontFamily: 'AdventPro', color: '#fff' }}>
                   Nome de usuário na Steam:
                 </TypoSecond>
                 <WhiteTextField
@@ -199,7 +199,7 @@ export function Profile() {
               </Box>
             </Box>
 
-            <TypoSecond sx={{ fontFamily: 'Advent Pro', color: '#fff' }}>
+            <TypoSecond sx={{ fontFamily: 'AdventPro', color: '#fff' }}>
               Seu nome de usuário:
             </TypoSecond>
             <WhiteTextField
@@ -214,7 +214,7 @@ export function Profile() {
               sx={{
                 marginTop: '-18px',
 
-                fontFamily: 'Advent Pro',
+                fontFamily: 'AdventPro',
                 color: '#fff'
               }}
             >
@@ -273,7 +273,7 @@ export function Profile() {
           >
             Erro
           </TypoMain>
-          <TypoSecond sx={{ fontSize: '24px', fontFamily: 'Advent Pro' }}>
+          <TypoSecond sx={{ fontSize: '24px', fontFamily: 'AdventPro' }}>
             {errorMessage}
           </TypoSecond>
         </Box>

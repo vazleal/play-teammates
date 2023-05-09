@@ -7,7 +7,7 @@ import backHomeVal from '../assets/images/jet.png'
 import { Link } from 'react-router-dom'
 import TypoMain from '../components/TypoMain'
 
-function Home() {
+export function Home() {
   return (
     <>
       <Box
@@ -44,7 +44,7 @@ function Home() {
           </Typography>
           <Typography
             sx={{
-              fontFamily: 'Advent Pro',
+              fontFamily: 'AdventPro',
               fontStyle: 'normal',
               fontWeight: 250,
               fontSize: '26px',
@@ -59,11 +59,11 @@ function Home() {
             convites e acessar os convites existentes.
           </Typography>
 
-          <Link to="/allInvites">
+          <Link to="/invites">
             <Typography
               sx={{
                 marginTop: '12px',
-                fontFamily: 'Advent Pro',
+                fontFamily: 'AdventPro',
                 fontStyle: 'normal',
                 fontWeight: 250,
                 fontSize: '24px',
@@ -104,7 +104,7 @@ function Home() {
         <Gamestrip
           strip_color="linear-gradient(270deg, rgba(255, 163, 0, 0) 0%, rgba(253, 95, 109, 1) 50.28%, rgba(255, 163, 1, 0) 100%)"
           text="VALORANT"
-          link="/inviteVal"
+          link="/invites/valorant"
         />
       </Box>
 
@@ -127,7 +127,7 @@ function Home() {
       <Gamestrip
         strip_color="linear-gradient(270deg, rgba(255, 95, 106, 0) 0%, rgba(255, 163, 1, 0.8) 50.28%, rgba(254, 93, 108, 0) 100%)"
         text="COUNTER STRIKE"
-        link="/inviteCS"
+        link="/invites/counter-strike"
       />
 
       <Box
@@ -174,5 +174,3 @@ function Home() {
     </>
   )
 }
-
-export default Home

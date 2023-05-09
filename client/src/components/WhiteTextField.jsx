@@ -13,7 +13,7 @@ function WhiteTextField(props) {
           color: 'white',
           padding: '12px 16px',
           fontSize: '20px',
-          fontFamily: 'Advent Pro'
+          fontFamily: 'AdventPro'
         },
         '& .MuiInputLabel-root': {
           color: 'white !important',

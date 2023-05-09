@@ -47,7 +47,7 @@ function InviteCard({ title, number, engage, communication, discord }) {
         >
           <img src={individual} alt="Person" style={{ width: '24px' }} />
           <Typography
-            sx={{ fontSize: '36px', fontFamily: 'Advent Pro', color: '#fff' }}
+            sx={{ fontSize: '36px', fontFamily: 'AdventPro', color: '#fff' }}
           >
             3
           </Typography>
@@ -64,7 +64,7 @@ function InviteCard({ title, number, engage, communication, discord }) {
       >
         <Typography
           sx={{
-            fontFamily: 'Advent Pro',
+            fontFamily: 'AdventPro',
             fontSize: '22px',
             color: '#fff',
             padding: '0px 12px',
@@ -77,7 +77,7 @@ function InviteCard({ title, number, engage, communication, discord }) {
 
         <Typography
           sx={{
-            fontFamily: 'Advent Pro',
+            fontFamily: 'AdventPro',
             fontSize: '22px',
             color: '#fff',
             padding: '0px 12px',
@@ -90,7 +90,7 @@ function InviteCard({ title, number, engage, communication, discord }) {
 
         <Typography
           sx={{
-            fontFamily: 'Advent Pro',
+            fontFamily: 'AdventPro',
             fontSize: '22px',
             color: '#fff',
             padding: '0px 12px',

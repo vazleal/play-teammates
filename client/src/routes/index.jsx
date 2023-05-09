@@ -8,21 +8,21 @@ import {
 
 import Navbar from '../components/Navbar.jsx'
 import Background from '../components/Background.jsx'
-import Home from '../pages/Home.jsx'
+
+import { Home } from '../pages/Home'
 import { SignUp } from '../pages/SignUp'
 import { SignIn } from '../pages/SignIn'
-import { Profile } from '../pages/Profile.jsx'
-import AllInvites from '../pages/AllInvites.jsx'
-import PostInvite from '../pages/PostInvite.jsx'
-import InviteCS from '../pages/InviteCS.jsx'
-import InviteVal from '../pages/InviteVal.jsx'
+import { Profile } from '../pages/Profile'
+import { Invites } from '../pages/Invites'
+import { GameInvite } from '../pages/GameInvite.jsx'
+import PostInvite from '../pages/PostInvite'
 
 import { useAuth } from '../hooks/useAuth'
 
 function Root() {
   return (
     <Background>
-      <Navbar loged="true" />
+      <Navbar />
       <Outlet />
     </Background>
   )
@@ -84,9 +84,8 @@ export function Routes() {
               </ProtectedRoute>
             }
           />
-          <Route path="/inviteVal" element={<InviteVal />} />
-          <Route path="/inviteCS" element={<InviteCS />} />
-          <Route path="/allInvites" element={<AllInvites />} />
+          <Route path="/invites/:game" element={<GameInvite />} />
+          <Route path="/invites" element={<Invites />} />
         </Route>
       </Router>
     </BrowserRouter>

@@ -89,7 +89,7 @@ export function SignUp() {
           </TypoMain>
 
           <form onSubmit={handleSignUp}>
-            <TypoSecond sx={{ fontFamily: 'Advent Pro', color: '#fff' }}>
+            <TypoSecond sx={{ fontFamily: 'AdventPro', color: '#fff' }}>
               Escolha um nome de usuário:
             </TypoSecond>
             <WhiteTextField
@@ -103,7 +103,7 @@ export function SignUp() {
             <TypoSecond
               sx={{
                 marginTop: '-18px',
-                fontFamily: 'Advent Pro',
+                fontFamily: 'AdventPro',
                 color: '#fff'
               }}
             >
@@ -132,7 +132,7 @@ export function SignUp() {
                   width: '100%'
                 }}
               >
-                <TypoSecond sx={{ fontFamily: 'Advent Pro', color: '#fff' }}>
+                <TypoSecond sx={{ fontFamily: 'AdventPro', color: '#fff' }}>
                   Crie uma senha:
                 </TypoSecond>
                 <WhiteTextField
@@ -150,7 +150,7 @@ export function SignUp() {
                   width: '100%'
                 }}
               >
-                <TypoSecond sx={{ fontFamily: 'Advent Pro', color: '#fff' }}>
+                <TypoSecond sx={{ fontFamily: 'AdventPro', color: '#fff' }}>
                   Repita sua senha:
                 </TypoSecond>
                 <WhiteTextField
@@ -207,7 +207,7 @@ export function SignUp() {
           >
             Erro
           </TypoMain>
-          <TypoSecond sx={{ fontSize: '24px', fontFamily: 'Advent Pro' }}>
+          <TypoSecond sx={{ fontSize: '24px', fontFamily: 'AdventPro' }}>
             {errorMessage}
           </TypoSecond>
         </Box>

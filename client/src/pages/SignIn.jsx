@@ -67,7 +67,7 @@ export function SignIn() {
           </TypoMain>
 
           <form onSubmit={handleSubmit}>
-            <TypoSecond sx={{ fontFamily: 'Advent Pro', color: '#fff' }}>
+            <TypoSecond sx={{ fontFamily: 'AdventPro', color: '#fff' }}>
               Seu e-mail:
             </TypoSecond>
             <WhiteTextField
@@ -82,7 +82,7 @@ export function SignIn() {
             <TypoSecond
               sx={{
                 marginTop: '-18px',
-                fontFamily: 'Advent Pro',
+                fontFamily: 'AdventPro',
                 color: '#fff'
               }}
             >
@@ -141,7 +141,7 @@ export function SignIn() {
           >
             Erro
           </TypoMain>
-          <TypoSecond sx={{ fontSize: '24px', fontFamily: 'Advent Pro' }}>
+          <TypoSecond sx={{ fontSize: '24px', fontFamily: 'AdventPro' }}>
             {errorMessage}
           </TypoSecond>
         </Box>

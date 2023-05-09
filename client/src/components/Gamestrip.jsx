@@ -34,7 +34,7 @@ const Gamestrip = props => {
         sx={{
           position: 'absolute',
           right: '48px',
-          fontFamily: 'Advent Pro',
+          fontFamily: 'AdventPro',
           fontStyle: 'normal',
           fontWeight: '250',
           fontSize: '24px',
