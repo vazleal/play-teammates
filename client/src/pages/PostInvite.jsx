@@ -234,6 +234,7 @@ function PostInvite() {
               height: '17.65%',
               left: '3.04%',
               top: '23.04%',
+              overflowY: 'auto',
               background: 'linear-gradient(180deg, rgba(17, 27, 37, 0.72) 0%, rgba(29, 44, 73, 0.44) 100%)',
               opacity: 0.8,
               borderRadius: '8.13679px',
