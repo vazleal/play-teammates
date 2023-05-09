@@ -4,14 +4,12 @@ import { type User } from '@prisma/client'
 
 import { UserAlreadyRegistered } from '@/application/errors/users/user-already-registered'
 
-import { hash } from 'bcrypt'
 import { UserNotFound } from '@/application/errors/users/user-not-found'
 
 interface UpdateUserRequest {
-  id: string
+  userId: string
   username: string
   email: string
-  password: string
   steamId: string
   steamName: string
   riotId: string
@@ -24,13 +22,14 @@ interface UpdateUserResponse {
 
 export class UpdateUser {
   async execute(request: UpdateUserRequest): Promise<UpdateUserResponse> {
-    const { id, username, email, password, steamId, steamName, riotId, riotTag } = request
+    const { userId, username, email, steamId, steamName, riotId, riotTag } =
+      request
 
     const user = await prisma.user.findUnique({
-      where: { id: id}
+      where: { id: userId }
     })
 
-    if (!user){
+    if (!user) {
       throw new UserNotFound()
     }
 
@@ -42,23 +41,26 @@ export class UpdateUser {
       where: { email }
     })
 
-    if (usernameRegistered || emailRegistered) {
+    if (
+      (usernameRegistered && usernameRegistered.id !== userId) ||
+      (emailRegistered && emailRegistered.id !== userId)
+    ) {
       throw new UserAlreadyRegistered()
     }
 
-    const hashedPassword = await hash(password, 10)
+    const avatarUrl = `https://api.dicebear.com/6.x/adventurer/svg?seed=${username}&scale=110&backgroundColor=c0aede,d1d4f9,ffd5dc,ffdfbf`
 
     const newUser = await prisma.user.update({
       data: {
         username,
         email,
-        password: hashedPassword,
+        avatarUrl,
         steamId,
         steamName,
         riotId,
         riotTag
       },
-      where: { id: id }
+      where: { id: userId }
     })
 
     return { newUser }

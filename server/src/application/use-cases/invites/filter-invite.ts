@@ -5,7 +5,7 @@ import { type Invite } from '@prisma/client'
 import { InviteNotFound } from '@/application/errors/invites/invite-not-found'
 
 interface FilterInviteRequest {
-    game: string
+  game: string
 }
 
 interface FilterInviteResponse {
@@ -17,11 +17,11 @@ export class FilterInvite {
     const { game } = request
 
     const invites = await prisma.invite.findMany({
-        where: { game }
+      where: { game }
     })
 
     if (!invites) {
-        throw new InviteNotFound()
+      throw new InviteNotFound()
     }
 
     return { invites }

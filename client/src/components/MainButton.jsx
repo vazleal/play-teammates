@@ -8,8 +8,9 @@ function MainButton(props) {
       sx={{
         textTransform: 'none',
         backgroundColor: '#2F405C',
-        borderRadius: '11px',
-        padding: '2px 15px'
+        borderRadius: '12px',
+        padding: '2px 15px',
+        ...(props.sx || {})
       }}
     />
   )

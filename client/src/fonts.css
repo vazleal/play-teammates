@@ -6,6 +6,8 @@
 }
 
 @font-face {
-  font-family: 'AdventPro', sans-serif;
+  font-family: 'AdventPro';
   src: url('./assets/fonts/AdventPro_Expanded-Light.ttf');
+  font-weight: light;
+  font-style: normal;
 }
