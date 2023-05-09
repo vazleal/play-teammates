@@ -48,51 +48,51 @@ function handleModalOpen(message) {
 function PostInvite() {
   const { user } = useAuth();
 
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    const classes = useStyles();
+  const classes = useStyles();
 
-    const [game, setGame] = useState('');
+  const [game, setGame] = useState('');
 
-    const [isRanked, setIsRanked] = useState(0);
+  const [isRanked, setIsRanked] = useState(0);
 
-    const [communication, setCommunication] = useState('');
+  const [communication, setCommunication] = useState('');
 
-    const [notes, setNotes] = useState('');
+  const [notes, setNotes] = useState('');
 
-    const [numPlayers, setNumPlayers] = useState(0);
+  const [numPlayers, setNumPlayers] = useState(0);
 
-    const [rankPlayers, setRankPlayers] = useState('');
+  const [rankPlayers, setRankPlayers] = useState('');
 
-    const [motivation, setMotivation] = useState('');
+  const [motivation, setMotivation] = useState('');
 
-    async function handlePostInvite(event) {
-      if (!numPlayers) {
-        handleModalOpen('Por favor, a quantidade de jogadores que estão no grupo')
-        return
-      }
-      if (!game) {
-        handleModalOpen('Por favor, informe o jogo do convite')
-        return
-      }
-      if (!rankPlayers) {
-        handleModalOpen(
-          'Por favor, informe o elo mínimo para participar do seu grupo'
-        )
-        return
-      }
-      if (!motivation) {
-        handleModalOpen('Por favor, informe a motivação do convite')
-        return
-      }
-      if (!communication) {
-        handleModalOpen('Por favor, informe qual a categoria de comunicação')
-        return
-      }
-      if (!isRanked) {
-        handleModalOpen('Por favor, informe se é ranqueada ou não')
-        return
-      }
+  async function handlePostInvite(event) {
+    if (!numPlayers) {
+      handleModalOpen('Por favor, a quantidade de jogadores que estão no grupo')
+      return
+    }
+    if (!game) {
+      handleModalOpen('Por favor, informe o jogo do convite')
+      return
+    }
+    if (!rankPlayers) {
+      handleModalOpen(
+        'Por favor, informe o elo mínimo para participar do seu grupo'
+      )
+      return
+    }
+    if (!motivation) {
+      handleModalOpen('Por favor, informe a motivação do convite')
+      return
+    }
+    if (!communication) {
+      handleModalOpen('Por favor, informe qual a categoria de comunicação')
+      return
+    }
+    if (!isRanked) {
+      handleModalOpen('Por favor, informe se é ranqueada ou não')
+      return
+    }
 
     try {
       await api.post('/invites', {
