@@ -8,6 +8,8 @@ import { api } from '../services/api'
 import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
 import MainButton from '../components/MainButton';
+import ValChar from '../assets/images/image 3.png';
+import CSChar from '../assets/images/pngwing 1.png'
 
 
 const useStyles = makeStyles({
@@ -117,7 +119,31 @@ function PostInvite() {
 
     return (
       <>
-        <Box sx={{height: '28.22vh'}}/>
+        <Box sx={{height: '28.22vh'}}>
+        <img
+          src={CSChar}
+          alt="CounterStrike-character"
+          style={{
+            position: 'absolute',
+            top: '11.5%',
+            left: '45%',
+            width: '480px',
+            clip: 'rect(0px, 1000px, 223px, 0px)'
+          }}
+        />
+        <img
+          src={ValChar}
+          alt="Valorant-character"
+          style={{
+            position: 'absolute',
+            left: '28vw',
+            top: '11%',
+            width: '572px',
+            height: '903px',
+            clip: 'rect(0px, 1000px, 228px, 0px)'
+          }}
+        />
+        </Box>
         <Box sx={{
           display: 'flex',
           align: 'center',
