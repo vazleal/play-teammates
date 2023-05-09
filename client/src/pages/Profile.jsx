@@ -1,12 +1,11 @@
 import { useState } from 'react'
-import { Box, Grid, Avatar, Modal } from '@mui/material'
+import { Box, Avatar, Modal } from '@mui/material'
 import '../fonts.css'
 import TypoMain from '../components/TypoMain'
 import TypoSecond from '../components/TypoSecond'
 import MainButton from '../components/MainButton'
 import WhiteTextField from '../components/WhiteTextField.jsx'
 import ProfileContainer from '../components/ProfileContainer'
-import avatarIMG from '../assets/images/Multiavatar-Teammates.jpg'
 
 import { useAuth } from '../hooks/useAuth'
 
@@ -27,8 +26,6 @@ export function Profile() {
   const [modalOpen, setModalOpen] = useState(false)
   const [errorMessage, setErrorMessage] = useState(null)
 
-  console.log(user)
-
   function handleModalOpen(message) {
     setModalOpen(true)
     setErrorMessage(message)
@@ -37,8 +34,28 @@ export function Profile() {
   async function handleUpdateUser(event) {
     event.preventDefault()
 
+    if (!riotId) {
+      handleModalOpen('Por favor, insira um Riot ID válido.')
+      return
+    }
+
+    if (!steamId) {
+      handleModalOpen('Por favor, insira um link do perfil válido.')
+      return
+    }
+
+    if (!riotTag) {
+      handleModalOpen('Por favor, insira um Riot Tag válido.')
+      return
+    }
+
+    if (!steamName) {
+      handleModalOpen('Por favor, insira um nome de usuário da steam válido.')
+      return
+    }
+
     if (!username) {
-      handleModalOpen('Por favor, insira um username válido.')
+      handleModalOpen('Por favor, insira um nome de usuário válido.')
       return
     }
 
@@ -47,18 +64,12 @@ export function Profile() {
       return
     }
 
-    if (!password || password.length < 6) {
-      handleModalOpen('A senha precisa ter pelo menos seis caracteres.')
-      return
-    }
-
-    if (password !== confirmPassword) {
-      handleModalOpen('A senha e a confirmação de senha não são iguais.')
-      return
-    }
-
     try {
       const response = await api.put('/users', {
+        riotId,
+        steamId,
+        riotTag,
+        steamName,
         username,
         email
       })
@@ -66,6 +77,13 @@ export function Profile() {
       const { newUser } = response.data
 
       updateUser(newUser)
+
+      setRiotId(newUser.riotId)
+      setSteamId(newUser.steamId)
+      setRiotTag(newUser.riotTag)
+      setSteamName(newUser.steamName)
+      setUsername(newUser.username)
+      setEmail(newUser.email)
 
       toast.success('Informações atualizadas com sucesso!')
     } catch (err) {
@@ -84,7 +102,7 @@ export function Profile() {
           marginTop: '40px'
         }}
       >
-        <Avatar src={user.avatarUrl} sx={{ width: '120px', height: '120px' }} />
+        <Avatar src={user.avatar} sx={{ width: '120px', height: '120px' }} />
 
         <TypoMain
           sx={{ fontSize: '32px', paddingTop: '8px', paddingBottom: '16px' }}
@@ -107,7 +125,9 @@ export function Profile() {
                   width: '100%'
                 }}
               >
-                <TypoSecond>Riot ID:</TypoSecond>
+                <TypoSecond sx={{ fontFamily: 'Advent Pro', color: '#fff' }}>
+                  Riot ID:
+                </TypoSecond>
                 <WhiteTextField
                   value={riotId}
                   onChange={e => setRiotId(e.target.value)}
@@ -122,7 +142,9 @@ export function Profile() {
                   width: '100%'
                 }}
               >
-                <TypoSecond>Link do perfil da Steam:</TypoSecond>
+                <TypoSecond sx={{ fontFamily: 'Advent Pro', color: '#fff' }}>
+                  Link do perfil da Steam:
+                </TypoSecond>
                 <WhiteTextField
                   value={steamId}
                   onChange={e => setSteamId(e.target.value)}
@@ -147,7 +169,9 @@ export function Profile() {
                   width: '100%'
                 }}
               >
-                <TypoSecond>Riot Tag:</TypoSecond>
+                <TypoSecond sx={{ fontFamily: 'Advent Pro', color: '#fff' }}>
+                  Riot Tag:
+                </TypoSecond>
                 <WhiteTextField
                   value={riotTag}
                   onChange={e => setRiotTag(e.target.value)}
@@ -162,7 +186,9 @@ export function Profile() {
                   width: '100%'
                 }}
               >
-                <TypoSecond>Nome de usuário na Steam:</TypoSecond>
+                <TypoSecond sx={{ fontFamily: 'Advent Pro', color: '#fff' }}>
+                  Nome de usuário na Steam:
+                </TypoSecond>
                 <WhiteTextField
                   value={steamName}
                   onChange={e => setSteamName(e.target.value)}
@@ -173,7 +199,9 @@ export function Profile() {
               </Box>
             </Box>
 
-            <TypoSecond>Seu nome de usuário:</TypoSecond>
+            <TypoSecond sx={{ fontFamily: 'Advent Pro', color: '#fff' }}>
+              Seu nome de usuário:
+            </TypoSecond>
             <WhiteTextField
               value={username}
               onChange={e => setUsername(e.target.value)}
@@ -182,7 +210,16 @@ export function Profile() {
               }}
             />
 
-            <TypoSecond sx={{ marginTop: '-18px' }}>Seu e-mail:</TypoSecond>
+            <TypoSecond
+              sx={{
+                marginTop: '-18px',
+
+                fontFamily: 'Advent Pro',
+                color: '#fff'
+              }}
+            >
+              Seu e-mail:
+            </TypoSecond>
             <WhiteTextField
               type="email"
               value={email}
@@ -231,12 +268,14 @@ export function Profile() {
         >
           <TypoMain
             sx={{
-              fontSize: '24px'
+              fontSize: '36px'
             }}
           >
             Erro
           </TypoMain>
-          <TypoSecond>{errorMessage}</TypoSecond>
+          <TypoSecond sx={{ fontSize: '24px', fontFamily: 'Advent Pro' }}>
+            {errorMessage}
+          </TypoSecond>
         </Box>
       </Modal>
     </>

@@ -75,7 +75,7 @@ export function SignUp() {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          marginTop: '180px'
+          marginTop: '160px'
         }}
       >
         <ProfileContainer>
@@ -89,7 +89,9 @@ export function SignUp() {
           </TypoMain>
 
           <form onSubmit={handleSignUp}>
-            <TypoSecond>Escolha um nome de usuário:</TypoSecond>
+            <TypoSecond sx={{ fontFamily: 'Advent Pro', color: '#fff' }}>
+              Escolha um nome de usuário:
+            </TypoSecond>
             <WhiteTextField
               value={username}
               onChange={e => setUsername(e.target.value)}
@@ -98,7 +100,15 @@ export function SignUp() {
               }}
             />
 
-            <TypoSecond sx={{ marginTop: '-18px' }}>Seu e-mail:</TypoSecond>
+            <TypoSecond
+              sx={{
+                marginTop: '-18px',
+                fontFamily: 'Advent Pro',
+                color: '#fff'
+              }}
+            >
+              Seu e-mail:
+            </TypoSecond>
             <WhiteTextField
               type="email"
               value={email}
@@ -122,7 +132,9 @@ export function SignUp() {
                   width: '100%'
                 }}
               >
-                <TypoSecond>Crie uma senha:</TypoSecond>
+                <TypoSecond sx={{ fontFamily: 'Advent Pro', color: '#fff' }}>
+                  Crie uma senha:
+                </TypoSecond>
                 <WhiteTextField
                   type="password"
                   value={password}
@@ -138,7 +150,9 @@ export function SignUp() {
                   width: '100%'
                 }}
               >
-                <TypoSecond>Repita sua senha:</TypoSecond>
+                <TypoSecond sx={{ fontFamily: 'Advent Pro', color: '#fff' }}>
+                  Repita sua senha:
+                </TypoSecond>
                 <WhiteTextField
                   type="password"
                   value={confirmPassword}
@@ -188,12 +202,14 @@ export function SignUp() {
         >
           <TypoMain
             sx={{
-              fontSize: '24px'
+              fontSize: '36px'
             }}
           >
             Erro
           </TypoMain>
-          <TypoSecond>{errorMessage}</TypoSecond>
+          <TypoSecond sx={{ fontSize: '24px', fontFamily: 'Advent Pro' }}>
+            {errorMessage}
+          </TypoSecond>
         </Box>
       </Modal>
     </>

@@ -10,7 +10,7 @@ export const AuthProvider = ({ children }) => {
     const storageUser = localStorage.getItem('@teammates:user')
 
     if (token && storageUser) {
-      api.defaults.headers.common.Authorization = token
+      api.defaults.headers.common.Authorization = `Bearer ${token}`
       return JSON.parse(storageUser)
     }
 
@@ -31,7 +31,7 @@ export const AuthProvider = ({ children }) => {
 
     const { token, user: signedUser } = response.data
 
-    api.defaults.headers.common.Authorization = token
+    api.defaults.headers.common.Authorization = `Bearer ${token}`
 
     localStorage.setItem('@teammates:token', token)
     localStorage.setItem('@teammates:user', JSON.stringify(signedUser))

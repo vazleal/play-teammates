@@ -6,8 +6,9 @@ interface HTTPInvite {
   game: string
   notes: string
   numPlayers: number
-  rankPlayers: string[]
-  tags: string[]
+  rankPlayers: string
+  motivation: string
+  communication: string
   userId: string
   createdAt: Date
   updatedAt: Date
@@ -21,8 +22,9 @@ export class InviteViewModel {
       game: invite.game,
       notes: invite.notes,
       numPlayers: invite.numPlayers,
-      rankPlayers: invite.rankPlayers.split(','),
-      tags: invite.tags.split(','),
+      rankPlayers: invite.rankPlayers,
+      motivation: invite.motivation,
+      communication: invite.communication,
       userId: invite.userId,
       createdAt: invite.createdAt,
       updatedAt: invite.updatedAt

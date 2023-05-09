@@ -30,12 +30,12 @@ export function SignIn() {
     event.preventDefault()
 
     if (!email || !/\S+@\S+\.\S+/.test(email)) {
-      handleModalOpen('Por favor, insira um endereço de e-mail válido')
+      handleModalOpen('Por favor, insira um endereço de e-mail válido.')
       return
     }
 
     if (!password || password.length < 6) {
-      handleModalOpen('A senha precisa ter pelo menos seis caracteres')
+      handleModalOpen('A senha precisa ter pelo menos seis caracteres.')
       return
     }
 
@@ -53,7 +53,7 @@ export function SignIn() {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          marginTop: '220px'
+          marginTop: '200px'
         }}
       >
         <ProfileContainer sx={{ width: '720px' }}>
@@ -67,7 +67,9 @@ export function SignIn() {
           </TypoMain>
 
           <form onSubmit={handleSubmit}>
-            <TypoSecond>Seu e-mail:</TypoSecond>
+            <TypoSecond sx={{ fontFamily: 'Advent Pro', color: '#fff' }}>
+              Seu e-mail:
+            </TypoSecond>
             <WhiteTextField
               type="email"
               sx={{
@@ -77,7 +79,15 @@ export function SignIn() {
               onChange={e => setEmail(e.target.value)}
             />
 
-            <TypoSecond sx={{ marginTop: '-18px' }}>Sua senha:</TypoSecond>
+            <TypoSecond
+              sx={{
+                marginTop: '-18px',
+                fontFamily: 'Advent Pro',
+                color: '#fff'
+              }}
+            >
+              Sua senha:
+            </TypoSecond>
             <WhiteTextField
               type="password"
               sx={{
@@ -126,12 +136,14 @@ export function SignIn() {
         >
           <TypoMain
             sx={{
-              fontSize: '24px'
+              fontSize: '36px'
             }}
           >
             Erro
           </TypoMain>
-          <TypoSecond>{errorMessage}</TypoSecond>
+          <TypoSecond sx={{ fontSize: '24px', fontFamily: 'Advent Pro' }}>
+            {errorMessage}
+          </TypoSecond>
         </Box>
       </Modal>
     </>

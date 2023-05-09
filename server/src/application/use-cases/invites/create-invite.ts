@@ -7,8 +7,9 @@ interface CreateInviteRequest {
   game: string
   notes: string
   numPlayers: number
-  rankPlayers: string[]
-  tags: string[]
+  rankPlayers: string
+  motivation: string
+  communication: string
   userId: string
 }
 
@@ -18,8 +19,16 @@ interface CreateInviteResponse {
 
 export class CreateInvite {
   async execute(request: CreateInviteRequest): Promise<CreateInviteResponse> {
-    const { isRanked, game, notes, numPlayers, rankPlayers, tags, userId } =
-      request
+    const {
+      userId,
+      isRanked,
+      game,
+      notes,
+      numPlayers,
+      rankPlayers,
+      motivation,
+      communication
+    } = request
 
     const invite = await prisma.invite.create({
       data: {
@@ -28,8 +37,9 @@ export class CreateInvite {
         game,
         notes,
         numPlayers,
-        rankPlayers: rankPlayers.toString(),
-        tags: tags.toString()
+        rankPlayers,
+        motivation,
+        communication
       }
     })
 

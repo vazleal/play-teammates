@@ -4,11 +4,10 @@ import { type User } from '@prisma/client'
 
 import { UserAlreadyRegistered } from '@/application/errors/users/user-already-registered'
 
-import { hash } from 'bcrypt'
 import { UserNotFound } from '@/application/errors/users/user-not-found'
 
 interface UpdateUserRequest {
-  id: string
+  userId: string
   username: string
   email: string
   steamId: string
@@ -23,10 +22,11 @@ interface UpdateUserResponse {
 
 export class UpdateUser {
   async execute(request: UpdateUserRequest): Promise<UpdateUserResponse> {
-    const { id, username, email, steamId, steamName, riotId, riotTag } = request
+    const { userId, username, email, steamId, steamName, riotId, riotTag } =
+      request
 
     const user = await prisma.user.findUnique({
-      where: { id }
+      where: { id: userId }
     })
 
     if (!user) {
@@ -41,7 +41,10 @@ export class UpdateUser {
       where: { email }
     })
 
-    if (usernameRegistered || emailRegistered) {
+    if (
+      (usernameRegistered && usernameRegistered.id !== userId) ||
+      (emailRegistered && emailRegistered.id !== userId)
+    ) {
       throw new UserAlreadyRegistered()
     }
 
@@ -57,7 +60,7 @@ export class UpdateUser {
         riotId,
         riotTag
       },
-      where: { id }
+      where: { id: userId }
     })
 
     return { newUser }

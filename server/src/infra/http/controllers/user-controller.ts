@@ -28,7 +28,7 @@ export class UserController {
     const updateUser = new UpdateUser()
 
     const { newUser } = await updateUser.execute({
-      id: userId,
+      userId,
       username,
       email,
       steamId,
