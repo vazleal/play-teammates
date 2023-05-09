@@ -81,8 +81,8 @@ function InviteCard({
           flexDirection: 'column',
           background:
             game === 'valorant'
-              ? 'linear-gradient(180deg, rgba(253, 95, 109, 0.7) 0%, rgba(20, 28, 39, 0.7) 100%)'
-              : 'linear-gradient(180deg, rgba(255, 163, 1, 0.7) 0%, rgba(29, 45, 73, 0.7) 100%)',
+              ? 'linear-gradient(180deg, rgba(253, 95, 109, 0.8) 0%, rgba(20, 28, 39, 0.8) 100%)'
+              : 'linear-gradient(180deg, rgba(255, 163, 1, 0.8) 0%, rgba(29, 45, 73, 0.8) 100%)',
           mixBlendMode: blank ? 'luminosity' : 'normal',
           boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
           padding: '24px',
