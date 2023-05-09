@@ -1,13 +1,41 @@
 import Gamestrip from '../components/Gamestrip.jsx'
-import { Box, Typography } from '@mui/material'
+import { Box, Grid, Typography } from '@mui/material'
 import InviteCard from '../components/InviteCard.jsx'
-import CardTag from '../components/CardTag.jsx'
-import backHomeCS from '../assets/images/6-2-counter-strike.png'
+import backHomeCS from '../assets/images/cs-header.png'
 import backHomeVal from '../assets/images/jet.png'
 import { Link } from 'react-router-dom'
 import TypoMain from '../components/TypoMain'
 
+import { useEffect, useState } from 'react'
+
+import { api } from '../services/api'
+import { toast } from 'react-toastify'
+
 export function Home() {
+  const [invites, setInvites] = useState([])
+
+  useEffect(() => {
+    async function fetchInvites() {
+      try {
+        const response = await api.get('/invites/all')
+
+        setInvites(response.data.invites)
+      } catch (err) {
+        toast.error('Falha ao listar os convites.')
+      }
+    }
+
+    fetchInvites()
+  }, [])
+
+  const valorantInvites = invites
+    .filter(invite => invite.game === 'valorant')
+    .slice(0, 3)
+
+  const counterStrikeInvites = invites
+    .filter(invite => invite.game === 'counter-strike')
+    .slice(0, 3)
+
   return (
     <>
       <Box
@@ -112,16 +140,25 @@ export function Home() {
         sx={{
           display: 'flex',
           width: '100%',
-          gap: '16px',
           alignItems: 'center',
           justifyContent: 'center',
           paddingTop: '40px',
           paddingBottom: '40px'
         }}
       >
-        <TypoMain sx={{ fontSize: '36px' }}>
-          Não existem convites no momento, volte mais tarde ou crie o seu!
-        </TypoMain>
+        {valorantInvites.length === 0 ? (
+          <TypoMain sx={{ fontSize: '28px' }}>
+            Não existem convites no momento, volte mais tarde ou crie o seu!
+          </TypoMain>
+        ) : (
+          <Grid container spacing={3}>
+            {valorantInvites.map(invite => (
+              <Grid item xs={4} key={invite.id}>
+                <InviteCard {...invite} blank={true} />
+              </Grid>
+            ))}
+          </Grid>
+        )}
       </Box>
 
       <Gamestrip
@@ -134,42 +171,25 @@ export function Home() {
         sx={{
           display: 'flex',
           width: '100%',
-          gap: '16px',
           alignItems: 'center',
           justifyContent: 'center',
           paddingTop: '40px',
-          paddingBottom: '70px'
+          paddingBottom: '40px'
         }}
       >
-        <InviteCard
-          title="Ranked"
-          number="3"
-          engage="casados"
-          communication="Nenhuma"
-          discord="Obrigatório"
-        >
-          <CardTag text="espero que funfe" />
-        </InviteCard>
-
-        <InviteCard
-          title="Ranked"
-          number="3"
-          engage="casados"
-          communication="Nenhuma"
-          discord="Obrigatório"
-        >
-          <CardTag text="espero que funfe" />
-        </InviteCard>
-
-        <InviteCard
-          title="Ranked"
-          number="3"
-          engage="casados"
-          communication="Nenhuma"
-          discord="Obrigatório"
-        >
-          <CardTag text="espero que funfe" />
-        </InviteCard>
+        {counterStrikeInvites.length === 0 ? (
+          <TypoMain sx={{ fontSize: '28px' }}>
+            Não existem convites no momento, volte mais tarde ou crie o seu!
+          </TypoMain>
+        ) : (
+          <Grid container spacing={3}>
+            {counterStrikeInvites.map(invite => (
+              <Grid item xs={4} key={invite.id}>
+                <InviteCard {...invite} blank={true} />
+              </Grid>
+            ))}
+          </Grid>
+        )}
       </Box>
     </>
   )

@@ -4,7 +4,7 @@ import { useAuth } from '../hooks/useAuth'
 import TypoMain from '../components/TypoMain'
 import { AppBar, Avatar, Box, Button, Toolbar, Typography } from '@mui/material'
 import MainButton from './MainButton'
-import TeammatesLogo from '../assets/images/teammates_logo.svg'
+import teammatesLogo from '../assets/images/logo.svg'
 
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
@@ -58,7 +58,7 @@ function Navbar() {
           }}
         >
           <Link to="/">
-            <img src={TeammatesLogo} alt="logo" />
+            <img src={teammatesLogo} alt="logo" />
           </Link>
 
           {isAuthenticated ? (
