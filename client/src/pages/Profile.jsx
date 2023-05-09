@@ -34,26 +34,6 @@ export function Profile() {
   async function handleUpdateUser(event) {
     event.preventDefault()
 
-    if (!riotId) {
-      handleModalOpen('Por favor, insira um Riot ID válido.')
-      return
-    }
-
-    if (!steamId) {
-      handleModalOpen('Por favor, insira um link do perfil válido.')
-      return
-    }
-
-    if (!riotTag) {
-      handleModalOpen('Por favor, insira um Riot Tag válido.')
-      return
-    }
-
-    if (!steamName) {
-      handleModalOpen('Por favor, insira um nome de usuário da steam válido.')
-      return
-    }
-
     if (!username) {
       handleModalOpen('Por favor, insira um nome de usuário válido.')
       return

@@ -15,13 +15,16 @@ export class FilterInvites {
     const { game } = request
 
     if (game === 'all') {
-      const invites = await prisma.invite.findMany()
+      const invites = await prisma.invite.findMany({
+        orderBy: { createdAt: 'desc' }
+      })
 
       return { invites }
     }
 
     const invites = await prisma.invite.findMany({
-      where: { game }
+      where: { game },
+      orderBy: { createdAt: 'desc' }
     })
 
     return { invites }

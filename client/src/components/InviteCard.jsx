@@ -2,7 +2,7 @@ import { Box, Typography } from '@mui/material'
 import individual from '../assets/images/vectors/individual.svg'
 import TypoMain from './TypoMain'
 
-function InviteCard({ title, number, engage, communication, discord }) {
+function InviteCard({ isRanked, numPlayers, game, blank }) {
   function handleClickInvite() {
     console.log('click')
   }
@@ -13,10 +13,14 @@ function InviteCard({ title, number, engage, communication, discord }) {
         display: 'flex',
         width: '100%',
         flexDirection: 'column',
-        background: 'linear-gradient(180deg, #FD5F6D 0%, #141C27 100%)',
-        mixBlendMode: 'luminosity',
+        background:
+          game === 'valorant'
+            ? 'linear-gradient(180deg, rgba(253, 95, 109, 0.7) 0%, rgba(20, 28, 39, 0.7) 100%)'
+            : 'linear-gradient(180deg, rgba(255, 163, 1, 0.7) 0%, rgba(29, 45, 73, 0.7) 100%)',
+        mixBlendMode: blank ? 'luminosity' : 'normal',
         boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
         padding: '24px',
+        borderRadius: '8px',
         border: 'none',
         cursor: 'pointer'
       }}
@@ -34,7 +38,9 @@ function InviteCard({ title, number, engage, communication, discord }) {
           marginBottom: '8px'
         }}
       >
-        <TypoMain sx={{ fontSize: '44px', color: '#fff' }}>Ranked</TypoMain>
+        <TypoMain sx={{ fontSize: '44px', color: '#fff' }}>
+          {isRanked ? 'Ranked' : 'Unranked'}
+        </TypoMain>
 
         <Box
           sx={{
@@ -49,7 +55,7 @@ function InviteCard({ title, number, engage, communication, discord }) {
           <Typography
             sx={{ fontSize: '36px', fontFamily: 'AdventPro', color: '#fff' }}
           >
-            3
+            {numPlayers}
           </Typography>
         </Box>
       </Box>
