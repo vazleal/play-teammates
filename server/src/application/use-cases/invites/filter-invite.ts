@@ -4,17 +4,23 @@ import { type Invite } from '@prisma/client'
 
 import { InviteNotFound } from '@/application/errors/invites/invite-not-found'
 
-interface FilterInviteRequest {
+interface FilterInvitesRequest {
   game: string
 }
 
-interface FilterInviteResponse {
+interface FilterInvitesResponse {
   invites: Invite[]
 }
 
-export class FilterInvite {
-  async execute(request: FilterInviteRequest): Promise<FilterInviteResponse> {
+export class FilterInvites {
+  async execute(request: FilterInvitesRequest): Promise<FilterInvitesResponse> {
     const { game } = request
+
+    if (game === 'all') {
+      const invites = await prisma.invite.findMany()
+
+      return { invites }
+    }
 
     const invites = await prisma.invite.findMany({
       where: { game }

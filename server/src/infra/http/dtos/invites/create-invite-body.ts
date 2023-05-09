@@ -1,9 +1,8 @@
 import { z } from 'zod'
 
 export const createInviteBody = z.object({
-  userId: z.string().nonempty(),
   isRanked: z.boolean(),
-  game: z.string().nonempty(),
+  game: z.enum(['counter-strike', 'valorant']),
   notes: z.string().nonempty(),
   numPlayers: z.number(),
   rankPlayers: z.string().nonempty(),

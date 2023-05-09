@@ -1,5 +1,5 @@
 import { z } from 'zod'
 
-export const filterInviteParams = z.object({
-  game: z.string().nonempty()
+export const filterInvitesParams = z.object({
+  game: z.enum(['all', 'counter-strike', 'valorant'])
 })

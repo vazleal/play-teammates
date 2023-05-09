@@ -7,15 +7,16 @@ import { createInviteBody } from '@/infra/http/dtos/invites/create-invite-body'
 import { ShowInvite } from '@/application/use-cases/invites/show-invite'
 import { showInviteParams } from '@/infra/http/dtos/invites/show-invite-params'
 
-import { FilterInvite } from '@/application/use-cases/invites/filter-invite'
-import { filterInviteParams } from '@/infra/http/dtos/invites/filter-invite-params'
+import { FilterInvites } from '@/application/use-cases/invites/filter-invite'
+import { filterInvitesParams } from '@/infra/http/dtos/invites/filter-invite-params'
 
 import { InviteViewModel } from '@/infra/http/view-models/invites-view-model'
 
 export class InviteController {
   async create(request: Request, response: Response): Promise<any> {
+    const userId = authenticatedUserId.parse(request.user.uid)
+
     const {
-      userId,
       isRanked,
       game,
       notes,
@@ -38,7 +39,7 @@ export class InviteController {
       communication
     })
 
-    return response.status(201).json({ user: InviteViewModel.toHTTP(invite) })
+    return response.status(201).json({ invite: InviteViewModel.toHTTP(invite) })
   }
 
   async show(request: Request, response: Response): Promise<any> {
@@ -51,10 +52,10 @@ export class InviteController {
   }
 
   async filter(request: Request, response: Response): Promise<any> {
-    const { game } = filterInviteParams.parse(request.params)
+    const { game } = filterInvitesParams.parse(request.params)
 
-    const filterInvite = new FilterInvite()
-    const { invites } = await filterInvite.execute({ game })
+    const filterInvites = new FilterInvites()
+    const { invites } = await filterInvites.execute({ game })
 
     return response.status(200).json({ invites })
   }
