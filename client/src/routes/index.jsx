@@ -6,15 +6,16 @@ import {
   Navigate
 } from 'react-router-dom'
 
-import Navbar from '../components/Navbar.jsx'
-import Background from '../components/Background.jsx'
+import Navbar from '../components/Navbar'
+import Background from '../components/Background'
 
 import { Home } from '../pages/Home'
 import { SignUp } from '../pages/SignUp'
 import { SignIn } from '../pages/SignIn'
 import { Profile } from '../pages/Profile'
 import { Invites } from '../pages/Invites'
-import { GameInvite } from '../pages/GameInvite.jsx'
+import { GameInvite } from '../pages/GameInvite'
+import { InviteDetail } from '../pages/InviteDetail'
 import PostInvite from '../pages/PostInvite'
 
 import { useAuth } from '../hooks/useAuth'
@@ -86,6 +87,7 @@ export function Routes() {
           />
           <Route path="/invites/:game" element={<GameInvite />} />
           <Route path="/invites" element={<Invites />} />
+          <Route path="/invite/:inviteId" element={<InviteDetail />} />
         </Route>
       </Router>
     </BrowserRouter>
