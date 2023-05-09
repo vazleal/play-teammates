@@ -93,7 +93,7 @@ function PostInvite(){
         }
 
         try {
-            await api.post('/invite', {
+            await api.post('/invites', {
               userId: user.id,
               isRanked,
               game, 
