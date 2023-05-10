@@ -16,7 +16,7 @@ import { Profile } from '../pages/Profile'
 import { Invites } from '../pages/Invites'
 import { GameInvite } from '../pages/GameInvite'
 import { InviteDetail } from '../pages/InviteDetail'
-import PostInvite from '../pages/PostInvite'
+import { CreateInvite } from '../pages/CreateInvite'
 
 import { useAuth } from '../hooks/useAuth'
 
@@ -78,10 +78,10 @@ export function Routes() {
             }
           />
           <Route
-            path="/postInvite"
+            path="/invite/create"
             element={
               <ProtectedRoute isAuthenticated={isAuthenticated}>
-                <PostInvite />
+                <CreateInvite />
               </ProtectedRoute>
             }
           />
