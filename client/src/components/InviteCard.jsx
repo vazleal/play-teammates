@@ -203,7 +203,7 @@ function InviteCard({
               gap: '8px'
             }}
           >
-            {motivation === 'ranked' ? (
+            {motivation === 'serio' ? (
               <>
                 <img src={tryhard} alt="Tryhard" style={{ width: '20px' }} />
                 Jogando sério

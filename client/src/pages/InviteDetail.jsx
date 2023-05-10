@@ -250,7 +250,7 @@ export function InviteDetail() {
                     gap: '8px'
                   }}
                 >
-                  {invite.motivation === 'ranked' ? (
+                  {invite.motivation === 'serio' ? (
                     <>
                       <img
                         src={tryhard}
