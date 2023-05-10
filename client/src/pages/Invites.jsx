@@ -36,7 +36,7 @@ export function Invites() {
           bottom: 0,
           left: 0,
           width: '400px',
-          opacity: 0.6,
+          opacity: 0.5,
           zIndex: -10
         }}
       />
@@ -49,7 +49,7 @@ export function Invites() {
           bottom: 0,
           left: 110,
           width: '480px',
-          opacity: 0.8,
+          opacity: 0.5,
           zIndex: -12
         }}
       />

@@ -40,7 +40,7 @@ export function GameInvite() {
             bottom: 0,
             right: 0,
             width: '640px',
-            opacity: 0.6,
+            opacity: 0.7,
             zIndex: -10
           }}
         />
@@ -53,7 +53,7 @@ export function GameInvite() {
             bottom: 0,
             right: 0,
             width: '540px',
-            opacity: 0.6,
+            opacity: 0.7,
             zIndex: -10
           }}
         />

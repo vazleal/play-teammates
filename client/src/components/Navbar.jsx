@@ -2,9 +2,19 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../hooks/useAuth'
 import TypoMain from '../components/TypoMain'
-import { AppBar, Avatar, Box, Button, Toolbar, Typography } from '@mui/material'
+import {
+  AppBar,
+  Avatar,
+  Box,
+  Button,
+  IconButton,
+  Toolbar,
+  Typography
+} from '@mui/material'
 import MainButton from './MainButton'
 import teammatesLogo from '../assets/images/logo.svg'
+
+import AddIcon from '@mui/icons-material/Add'
 
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
@@ -25,6 +35,11 @@ function Navbar() {
   }
 
   const navigate = useNavigate()
+
+  function handleNavigateToCreateInvite() {
+    handleClose()
+    navigate('/invite/create')
+  }
 
   function handleNavigateProfile() {
     handleClose()
@@ -66,9 +81,14 @@ function Navbar() {
               sx={{
                 display: 'flex',
                 flexDirection: 'row',
-                alignItems: 'center'
+                alignItems: 'center',
+                gap: '8px'
               }}
             >
+              <IconButton onClick={handleNavigateToCreateInvite}>
+                <AddIcon sx={{ color: '#fff' }} />
+              </IconButton>
+
               <Button
                 id="avatar-menu-button"
                 sx={{ textTransform: 'none', gap: '12px' }}

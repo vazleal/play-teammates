@@ -39,6 +39,43 @@ export function InviteDetail() {
     fetchInvite()
   }, [inviteId])
 
+  function formatRankPLayers(rank) {
+    switch (rank) {
+      case 'unranked':
+        return 'Unranked'
+      case 'ferro':
+        return 'Ferro'
+      case 'bronze':
+        return 'Bronze'
+      case 'prata':
+        return 'Prata'
+      case 'ouro':
+        return 'Ouro'
+      case 'ak':
+        return 'AK'
+      case 'xerife':
+        return 'Xerife'
+      case 'aguia':
+        return 'Águia'
+      case 'supremo':
+        return 'Supremo'
+      case 'global':
+        return 'Global'
+      case 'platina':
+        return ' Platina'
+      case 'diamante':
+        return 'Diamante'
+      case 'ascendente':
+        return 'Ascendente'
+      case 'imortal':
+        return 'Imortal'
+      case 'radiante':
+        return 'Radiante'
+      default:
+        return 'Invalid'
+    }
+  }
+
   return (
     <>
       {!invite ? (
@@ -50,8 +87,8 @@ export function InviteDetail() {
           style={{
             position: 'fixed',
             bottom: 0,
-            right: 40,
-            width: '460px',
+            right: 60,
+            width: '480px',
             opacity: 0.6,
             zIndex: -10
           }}
@@ -63,7 +100,7 @@ export function InviteDetail() {
           style={{
             position: 'fixed',
             bottom: 0,
-            right: 40,
+            right: 80,
             width: '380px',
             opacity: 0.6,
             zIndex: -10
@@ -80,7 +117,7 @@ export function InviteDetail() {
       >
         <Box
           sx={{
-            width: '1020px',
+            width: '1100px',
             background:
               'linear-gradient(180deg, rgba(253, 95, 109, 0.7) 0%, rgba(20, 28, 39, 0.7) 100%)',
             mixBlendMode: 'luminosity',
@@ -182,6 +219,23 @@ export function InviteDetail() {
                   marginTop: '24px'
                 }}
               >
+                <Typography
+                  sx={{
+                    fontFamily: 'AdventPro',
+                    fontSize: '20px',
+                    color: '#fff',
+                    padding: '0px 12px',
+                    backgroundColor: '#858C99',
+                    borderRadius: '16px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '8px'
+                  }}
+                >
+                  Elo mínimo desejado: {formatRankPLayers(invite.rankPlayers)}
+                </Typography>
+
                 <Typography
                   sx={{
                     fontFamily: 'AdventPro',

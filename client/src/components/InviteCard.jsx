@@ -17,6 +17,7 @@ function InviteCard({
   isRanked,
   numPlayers,
   motivation,
+  rankPlayers,
   communication,
   game,
   blank
@@ -27,6 +28,43 @@ function InviteCard({
 
   const [modalOpen, setModalOpen] = useState(false)
   const [errorMessage, setErrorMessage] = useState(null)
+
+  function formatRankPLayers(rank) {
+    switch (rank) {
+      case 'unranked':
+        return 'Unranked'
+      case 'ferro':
+        return 'Ferro'
+      case 'bronze':
+        return 'Bronze'
+      case 'prata':
+        return 'Prata'
+      case 'ouro':
+        return 'Ouro'
+      case 'ak':
+        return 'AK'
+      case 'xerife':
+        return 'Xerife'
+      case 'aguia':
+        return 'Águia'
+      case 'supremo':
+        return 'Supremo'
+      case 'global':
+        return 'Global'
+      case 'platina':
+        return ' Platina'
+      case 'diamante':
+        return 'Diamante'
+      case 'ascendente':
+        return 'Ascendente'
+      case 'imortal':
+        return 'Imortal'
+      case 'radiante':
+        return 'Radiante'
+      default:
+        return 'Invalid'
+    }
+  }
 
   function handleModalOpen(message) {
     setModalOpen(true)
@@ -134,6 +172,23 @@ function InviteCard({
             gap: '16px'
           }}
         >
+          <Typography
+            sx={{
+              fontFamily: 'AdventPro',
+              fontSize: '22px',
+              color: '#fff',
+              padding: '0px 12px',
+              backgroundColor: '#858C99',
+              borderRadius: '16px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '8px'
+            }}
+          >
+            Elo mínimo desejado: {formatRankPLayers(rankPlayers)}
+          </Typography>
+
           <Typography
             sx={{
               fontFamily: 'AdventPro',
