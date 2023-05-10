@@ -13,8 +13,7 @@ import {
 } from '@mui/material'
 import MainButton from './MainButton'
 import teammatesLogo from '../assets/images/logo.svg'
-
-import AddIcon from '@mui/icons-material/Add'
+import createInviteIcon from '../assets/images/create-invite-icon.svg'
 
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
@@ -86,7 +85,7 @@ function Navbar() {
               }}
             >
               <IconButton onClick={handleNavigateToCreateInvite}>
-                <AddIcon sx={{ color: '#fff' }} />
+                <img src={createInviteIcon} alt="create-invite" />
               </IconButton>
 
               <Button

@@ -363,7 +363,6 @@ export function CreateInvite() {
                 fontSize: '24px',
                 fontWeight: 600
               }}
-              disabled={!game}
             >
               <MenuItem value={1}>1</MenuItem>
               <MenuItem value={2}>2</MenuItem>
@@ -423,6 +422,7 @@ export function CreateInvite() {
                   fontSize: '24px',
                   fontWeight: 600
                 }}
+                disabled={!game}
               >
                 <MenuItem value="unranked">Unranked</MenuItem>
                 <MenuItem value="ferro">Ferro</MenuItem>
